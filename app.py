@@ -10,6 +10,10 @@ app.config["MONGO_URI"] = 'mongodb://admin-1:family_recipes1@ds125125.mlab.com:2
 
 mongo = PyMongo(app)
 
+@app.route('/')
+def index():
+    return ("<h1>HEllo</h1>")
+
 
 
 if __name__ == '__main__':
