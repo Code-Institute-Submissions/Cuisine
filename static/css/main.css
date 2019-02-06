@@ -1,0 +1,42 @@
+header,
+main,
+footer {
+    padding-left: 300px;
+}
+
+@media only screen and (max-width: 992px) {
+    header,
+    main,
+    footer {
+        padding-left: 0;
+    }
+}
+
+/* Navbar */
+
+nav {
+    background-color: grey;
+}
+
+.logo-image {
+    margin: 20px 22px 5px 40px;
+}
+
+.smaller-logo {
+    height: 56px;
+}
+
+
+
+
+
+
+
+
+/* Media queries */
+
+@media only screen and (min-width: 992px) {
+  #logo-image-smaller {
+    display: none;
+  }
+}

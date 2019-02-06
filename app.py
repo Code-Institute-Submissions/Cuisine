@@ -12,7 +12,7 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    return ("<h1>HEllo</h1>")
+    return render_template("index.html")
 
 
 
