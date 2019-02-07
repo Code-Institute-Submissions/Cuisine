@@ -1,0 +1,24 @@
+{% extends 'base.html'%} {% block content %}
+{% for info in recipe %} 
+<div class="row">
+    
+    <div class="recipe-info">
+        <h2>{{ info.recipe_name }}</h2>
+
+
+    </div>
+</div>
+<div class="row">
+    <div class="recipe-ingredients">
+
+
+    </div>
+</div>
+<div class="row">
+    <div class="recipe-instructions">
+
+
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

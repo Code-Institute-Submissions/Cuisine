@@ -1,3 +1,27 @@
 {% extends 'base.html'%} {% block content %}
 
+<div class="parallax-container">
+    <div class="parallax"><img src="static/images/index-parallax.jpg"></div>
+</div>
+
+<div class="row recipe-card-spacing">
+    {% for recipe in recipes %}
+    <div class="col s12 m6 l3 recipe-card-border">
+        <div class="recipe-card">
+            <p class="recipe">{{recipe.recipe_name.capitalize()}}</p>
+            <p>Cooking time:
+                <p class="recipe">{{recipe.cooking_duration}}</p>
+            </p>
+            <p>Cuisine:
+                <p class="recipe">{{recipe.cuisine_type.capitalize()}}</p>
+            </p>
+            <p>Meal:
+                <p class="recipe">{{recipe.meal_type.capitalize()}}</p>
+            </p>
+            <a href="{{url_for('recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small">Recipe</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
 {% endblock %}
