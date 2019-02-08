@@ -25,12 +25,13 @@
                     <li><a href="#!">Cuisine Type</a></li>
                     <li><a href="#!">Meal Type</a></li>
                     <li><a href="#!">Serves</a></li>
-                    
-                    
+
+
                 </ul>
             </li>
 
-            <li><a href="#!">Add a new recipe </a></li>
+            <li><a href="{{url_for('add_recipe')}}">Add a new recipe </a></li>
+           
         </ul>
         <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
         <span id="logo-image-smaller">
@@ -53,6 +54,7 @@
     $(document).ready(function() {
         $(".button-collapse").sideNav();
         $('.parallax').parallax();
+        $('select').material_select();
     });
 </script>
 

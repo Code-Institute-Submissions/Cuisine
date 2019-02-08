@@ -18,6 +18,7 @@
             <p>Meal:
                 <p class="recipe">{{recipe.meal_type.capitalize()}}</p>
             </p>
+            <div>{{recipe.recipe_photo}}</div>
             <a href="{{url_for('recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small">Recipe</a>
         </div>
     </div>
