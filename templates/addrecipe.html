@@ -1,84 +1,164 @@
 {% extends 'base.html'%} {% block content %}
 <div class="row">
     <form class="col s10 offset-s1 add-recipe" action="{{ url_for('insert_recipe') }}" method="POST">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="recipe_name" name="recipe_name" type="text" required>
+                <label for="recipe_name">Recipe Name</label>
+            </div>
+
+            <div class="input-field col s12">
+                <textarea placeholder="Add a short description of your recipe" id="recipe_description" name="recipe_description" class="materialize-textarea" required></textarea>
+                <label for="textarea1">Recipe Description</label>
+            </div>
 
 
 
-        <div class="input-field col s12">
-            <input id="recipe_name" name="recipe_name" type="text">
-            <label for="recipe_name">Recipe Name</label>
-        </div>
+            <div class="input-field col s4 offset-s1">
+                <select id="serves" name="serves" required>
+                    <option value="" disabled selected>Choose the serving size</option>
+                    {% for size in serves %}
+                        <option value="{{size.serves}}">{{size.serves}}</option>
+                    {% endfor %}
+                </select>
+                <label>Serving size</label>
+            </div>
+
+
+
+            <div class="input-field col s4">
+                <select id="cooking_duration" name="cooking_duration" required>
+                    <option value="" disabled selected>Choose the cooking duration</option>
+                        {% for dur in cooking_duration %}
+                            <option value="{{dur.cooking_duration}}">{{dur.cooking_duration}}</option>
+                        {% endfor %}
+                s</select>
+                <label>Cooking duration</label>
+            </div>
 
 
 
 
-        <div class="input-field col s12">
-            <textarea placeholder="Add a short description of your recipe" id="recipe_description" name="recipe_description" class="materialize-textarea"></textarea>
-            <label for="textarea1">Recipe Description</label>
-        </div>
-
-        <div class="input-field col s5">
-            <select id="serves" name="serves">
-                <option value="" disabled selected>Choose the serving size</option>
-                {% for size in serves %}
-                    <option value="{{size.serves}}">{{size.serves}}</option>
-                {% endfor %}
-                
-            </select>
-            <label>Serving size</label>
-        </div>
-
-        <div class="col s2"></div>
-
-        <div class="input-field col s5">
-            <select id="cooking_duration" name="cooking_duration">
-                <option value="" disabled selected>Choose the cooking duration</option>
-                {% for dur in cooking_duration %}
-                    <option value="{{dur.cooking_duration}}">{{dur.cooking_duration}}</option>
-                {% endfor %}
-                
-            </select>
-            <label>Cooking duration</label>
-        </div>
-
-        <div class="input-field col s5">
-            <select id="cuisine_type" name="cuisine_type">
+            <div class="input-field col s4 offset-s1">
+                <select id="cuisine_type" name="cuisine_type" required>
                 <option value="" disabled selected>Choose the type of cuisine</option>
                 {% for type in cuisine_type %}
                     <option value="{{type.cuisine_type}}">{{type.cuisine_type}}</option>
                 {% endfor %}
             </select>
-            <label>Cuisine type</label>
-        </div>
+                <label>Cuisine type</label>
+            </div>
 
-        <div class="col s2"></div>
 
-        <div class="input-field col s5">
-            <select id="meal_type" name="meal_type">
+
+            <div class="input-field col s4">
+                <select id="meal_type" name="meal_type" required>
                 <option value="" disabled selected>Choose the type of meal</option>
                 {% for meal in meal_type %}
                     <option value="{{meal.meal_type}}">{{meal.meal_type}}</option>
                 {% endfor %}
                 
             </select>
-            <label>Cuisine type</label>
+                <label>Meal type</label>
+            </div>
+
+            <div class="input-field col s12">
+                <textarea placeholder="Please end each line with a '.' except for the last line. Ex: Cut the onions. Add the salt = 1. Cut the onions 2. Add the salt" name="recipe_instructions" class="materialize-textarea" required></textarea>
+                <label for="recipe_instructions">Recipe Description</label>
+            </div>
+
+            <div class="input-field col s12">
+                <textarea placeholder="Add the ingredients for the recipe. Separate each ingredient with a '.' Ex: Onions. Salt." id="ingredients" name="ingredients" class="materialize-textarea" required></textarea>
+                <label for="ingredients">Ingredients</label>
+            </div>
+        </div>
+        <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe</button>
         </div>
 
-        <div class="input-field col s12">
-            <textarea placeholder="Add instructions for how to prepare your recipe. Each '.' will become a new line (ex: Cut the onions. Add the salt = 1. Cut the onions 2. Add the salt" id="recipe_instructions" name="recipe_instructions" class="materialize-textarea"></textarea>
-            <label for="recipe_instructions">Recipe Description</label>
-        </div>
-        
-        <div class="input-field col s12">
-            <textarea placeholder="Add the ingredients for the recipe" id="ingredients" name="ingredients" class="materialize-textarea"></textarea>
-            <label for="ingredients">Ingredients</label>
-        </div>
-
-        <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe</button>
     </form>
 </div>
 
+<div class="row">
+    <form class="col s2" action="{{ url_for('insert_serving_size') }}" method="POST">
+        <a class="waves-effect waves-light btn modal-trigger modal-button-styling" href="#modal1">Add</a>
+
+
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>Add a new serving size</h4>
+                <p>Add a new serving size using the slider below.</p>
+
+                <p class="range-field">
+                    <input type="range" id="serves" name="serves" min="8" max="50" step="2" />
+                </p>
+
+
+                <div class="modal-footer">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Add serving size</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
 
 
 
+    <form class="col s2" action="{{ url_for('insert_cooking_duration') }}" method="POST">
+        <a class="waves-effect waves-light btn modal-trigger modal-button-styling" href="#modal2">Add</a>
+
+
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <h4>Add a new cooking duration</h4>
+                <p>Add a new cooking duration using the slider below below.</p>
+                <form action="" method="POST">
+                    <p class="range-field">
+                        <input type="range" id="cooking_duration" name="cooking_duration" min="120" max="360" step="15" />
+                    </p>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Add cooking duration</button>
+            </div>
+        </div>
+    </form>
+
+    <form class="col s2" action="{{ url_for('insert_cuisine_type') }}" method="POST">
+        <a class="waves-effect waves-light btn modal-trigger modal-button-styling" href="#modal3">Add</a>
+
+
+        <div id="modal3" class="modal">
+            <div class="modal-content">
+                <h4>Add a new cuisine type</h4>
+                <p>Add a new cuisine type in the box below.</p>
+                <input id="cuisine_type" name="cuisine_type" type="text">
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Add cuisine type</button>
+            </div>
+        </div>
+    </form>
+
+    <form class="col s2" action="{{ url_for('insert_meal_type') }}" method="POST">
+        <a class="waves-effect waves-light btn modal-trigger modal-button-styling" href="#modal4">Add</a>
+
+
+        <div id="modal4" class="modal">
+            <div class="modal-content">
+                <h4>Add a new meal type</h4>
+                <p>Add a new meal type in the box below.</p>
+                <input id="meal_type" name=meal_type" type="text">
+            </div>
+            <div class="modal-footer">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Add a meal type</button>
+            </div>
+        </div>
+    </form>
+
+</div>
 {% endblock %}

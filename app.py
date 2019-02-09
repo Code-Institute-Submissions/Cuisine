@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -10,7 +10,7 @@ from bson.objectid import ObjectId
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'recipesdb'
 app.config["MONGO_URI"] = 'mongodb://admin-1:family_recipes1@ds125125.mlab.com:25125/recipesdb'
-
+app.secret_key = os.getenv("SECRET", "secret key")
 
 
 mongo = PyMongo(app)
@@ -43,6 +43,39 @@ def insert_recipe():
     recipes =  mongo.db.recipes
     recipes.insert_one(request.form.to_dict())
     return redirect(url_for('get_recipes'))
+
+@app.route('/insert_serving_size', methods=["POST"])
+def insert_serving_size():
+    serving_sizes = mongo.db.serves
+    serving_sizes.insert_one(request.form.to_dict())
+    return redirect(url_for('add_recipe'))
+
+@app.route('/insert_cooking_duration', methods=["POST"])
+def insert_cooking_duration():
+    cooking_durations = mongo.db.cooking_duration
+    cooking_durations.insert_one(request.form.to_dict())
+    return redirect(url_for('add_recipe'))
+    
+@app.route('/insert_cuisine_type', methods=["POST"])
+def insert_cuisine_type():
+    cuisine_types = mongo.db.cuisine_type
+    cuisine_types.insert_one(request.form.to_dict())
+    return redirect(url_for('add_recipe'))
+    
+@app.route('/insert_meal_type', methods=["POST"])
+def insert_meal_type():
+    meal_types = mongo.db.meal_type
+    
+    """ need to add functionality to check if the type already exists"""
+    added_meal_type = request.form["meal_type"]
+    print(added_meal_type)
+    
+    meal_types.insert_one(request.form.to_dict())
+    
+    
+    
+    
+    return redirect(url_for('add_recipe'))
     
 
 

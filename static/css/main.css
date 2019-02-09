@@ -41,6 +41,10 @@ nav {
     height: 150px;
 }
 
+.parallax {
+  position:static;
+}
+
 /* recipe card */
 
 .recipe-card {
@@ -75,7 +79,9 @@ nav {
     margin: 27px 0px;
 }
 
-
+.input-field {
+    margin: 15px 20px;
+}
 
 
 /* Media queries */

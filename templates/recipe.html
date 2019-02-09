@@ -20,8 +20,10 @@
     <p name="recipe_name" id="recipe_name">   
     {%for item in recipe.recipe_instructions.split(".") %}
     
-    <li>{{ loop.index }} {{ item }}</li>
+    <li>{{ loop.index }}. {{ item }}</li>
+    
     {% endfor %}
+    
     
     </p>
 
