@@ -5,7 +5,7 @@
 
 
         <div class="input-field col s12">
-            <input id="recipe_name" type="text" class="validate">
+            <input id="recipe_name" name="recipe_name" type="text">
             <label for="recipe_name">Recipe Name</label>
         </div>
 
@@ -18,7 +18,7 @@
         </div>
 
         <div class="input-field col s5">
-            <select>
+            <select id="serves" name="serves">
                 <option value="" disabled selected>Choose the serving size</option>
                 {% for size in serves %}
                     <option value="{{size.serves}}">{{size.serves}}</option>
@@ -31,7 +31,7 @@
         <div class="col s2"></div>
 
         <div class="input-field col s5">
-            <select>
+            <select id="cooking_duration" name="cooking_duration">
                 <option value="" disabled selected>Choose the cooking duration</option>
                 {% for dur in cooking_duration %}
                     <option value="{{dur.cooking_duration}}">{{dur.cooking_duration}}</option>
@@ -42,20 +42,19 @@
         </div>
 
         <div class="input-field col s5">
-            <select>
+            <select id="cuisine_type" name="cuisine_type">
                 <option value="" disabled selected>Choose the type of cuisine</option>
                 {% for type in cuisine_type %}
                     <option value="{{type.cuisine_type}}">{{type.cuisine_type}}</option>
                 {% endfor %}
-                
             </select>
             <label>Cuisine type</label>
         </div>
-        
+
         <div class="col s2"></div>
-        
+
         <div class="input-field col s5">
-            <select>
+            <select id="meal_type" name="meal_type">
                 <option value="" disabled selected>Choose the type of meal</option>
                 {% for meal in meal_type %}
                     <option value="{{meal.meal_type}}">{{meal.meal_type}}</option>
@@ -65,12 +64,17 @@
             <label>Cuisine type</label>
         </div>
 
+        <div class="input-field col s12">
+            <textarea placeholder="Add instructions for how to prepare your recipe. Each '.' will become a new line (ex: Cut the onions. Add the salt = 1. Cut the onions 2. Add the salt" id="recipe_instructions" name="recipe_instructions" class="materialize-textarea"></textarea>
+            <label for="recipe_instructions">Recipe Description</label>
+        </div>
+        
+        <div class="input-field col s12">
+            <textarea placeholder="Add the ingredients for the recipe" id="ingredients" name="ingredients" class="materialize-textarea"></textarea>
+            <label for="ingredients">Ingredients</label>
+        </div>
 
-
-
-
-
-
+        <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe</button>
     </form>
 </div>
 

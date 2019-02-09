@@ -11,12 +11,19 @@
 </div>
 <div class="row">
     <div class="recipe-ingredients">
+        
        
     </div>
 </div>
 <div class="row">
     <div class="recipe-instructions">
-
+    <p name="recipe_name" id="recipe_name">   
+    {%for item in recipe.recipe_instructions.split(".") %}
+    
+    <li>{{ loop.index }} {{ item }}</li>
+    {% endfor %}
+    
+    </p>
 
     </div>
 </div>
