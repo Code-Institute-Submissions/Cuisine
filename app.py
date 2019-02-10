@@ -1,7 +1,9 @@
 import os
+import unicodedata
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+
 
 
 
@@ -44,36 +46,97 @@ def insert_recipe():
     recipes.insert_one(request.form.to_dict())
     return redirect(url_for('get_recipes'))
 
-@app.route('/insert_serving_size', methods=["POST"])
-def insert_serving_size():
-    serving_sizes = mongo.db.serves
-    serving_sizes.insert_one(request.form.to_dict())
+@app.route('/insert_serves', methods=["POST"])
+def insert_serves():
+    serves_size = mongo.db.serves
+    
+    current_serves_size_list = []
+        
+    for type in serves_size.find().distinct('serves'):
+        current_serves_size_list.append(type)
+            
+    current_serves_size_string = ', '.join(current_serves_size_list)
+        
+    
+    new_serves_size = request.form.get('serves')
+    
+    
+    
+    if request.method == 'POST':
+        if new_serves_size not in current_serves_size_string:
+            serves_size.insert_one(request.form.to_dict())
+        else:
+            flash("We already have a serving size for '{}' people".format(new_serves_size))
+    
     return redirect(url_for('add_recipe'))
 
 @app.route('/insert_cooking_duration', methods=["POST"])
 def insert_cooking_duration():
-    cooking_durations = mongo.db.cooking_duration
-    cooking_durations.insert_one(request.form.to_dict())
+    cooking_duration = mongo.db.cooking_duration
+    
+    current_cooking_duration_list = []
+        
+    for type in cooking_duration.find().distinct('cooking_duration'):
+        current_cooking_duration_list.append(type)
+            
+    current_cooking_duration_string = ', '.join(current_cooking_duration_list)
+        
+    
+    new_cooking_duration = request.form.get('cooking_duration')
+    
+    
+    if request.method == 'POST':
+        if new_cooking_duration not in current_cooking_duration_string:
+            cooking_duration.insert_one(request.form.to_dict())
+        else:
+            flash("We already have a cooking duration of '{}' minutes".format(new_cooking_duration))
+    
     return redirect(url_for('add_recipe'))
     
 @app.route('/insert_cuisine_type', methods=["POST"])
 def insert_cuisine_type():
     cuisine_types = mongo.db.cuisine_type
-    cuisine_types.insert_one(request.form.to_dict())
+    
+    current_cuisine_types_list = []
+        
+    for type in cuisine_types.find().distinct('cuisine_type'):
+        current_cuisine_types_list.append(type)
+            
+    current_cuisine_types_string = ', '.join(current_cuisine_types_list)
+        
+    
+    new_cuisine_type = request.form.get('cuisine_type').lower()
+    
+    
+    if request.method == 'POST':
+        if new_cuisine_type not in current_cuisine_types_string:
+            cuisine_types.insert_one(request.form.to_dict())
+        else:
+            flash("We already have a cuisine type called '{}'".format(new_cuisine_type))
+    
     return redirect(url_for('add_recipe'))
     
 @app.route('/insert_meal_type', methods=["POST"])
 def insert_meal_type():
+   
     meal_types = mongo.db.meal_type
     
-    """ need to add functionality to check if the type already exists"""
-    added_meal_type = request.form["meal_type"]
-    print(added_meal_type)
+    current_meal_types_list = []
+        
+    for type in meal_types.find().distinct('meal_type'):
+        current_meal_types_list.append(type)
+            
+    current_meal_types_string = ', '.join(current_meal_types_list)
+        
     
-    meal_types.insert_one(request.form.to_dict())
+    new_meal_type = request.form.get('meal_type').lower()
     
     
-    
+    if request.method == 'POST':
+        if new_meal_type not in current_meal_types_string:
+            meal_types.insert_one(request.form.to_dict())
+        else:
+            flash("We already have a meal type called '{}'".format(new_meal_type))
     
     return redirect(url_for('add_recipe'))
     

@@ -1,5 +1,14 @@
 {% extends 'base.html'%} {% block content %}
 <div class="row">
+
+    <h2 class="col s10 offset-s1">Add a new recipe</h2>
+    
+    <div class="row">
+        {% with messages = get_flashed_messages() %} {% for message in messages %}
+        <div id="flash-messages" class="col s6 offset-s2" role="alert">{{ message }}</div>
+        {% endfor %} {% endwith %}
+    </div>
+    
     <form class="col s10 offset-s1 add-recipe" action="{{ url_for('insert_recipe') }}" method="POST">
         <div class="row">
             <div class="input-field col s12">
@@ -12,13 +21,13 @@
                 <label for="textarea1">Recipe Description</label>
             </div>
 
-
+            <p class="prompt">Can't find an option to fit your recipe? add a new one below!</p>
 
             <div class="input-field col s4 offset-s1">
                 <select id="serves" name="serves" required>
                     <option value="" disabled selected>Choose the serving size</option>
                     {% for size in serves %}
-                        <option value="{{size.serves}}">{{size.serves}}</option>
+                        <option value="{{size.serves}}">{{size.serves}} people</option>
                     {% endfor %}
                 </select>
                 <label>Serving size</label>
@@ -30,7 +39,7 @@
                 <select id="cooking_duration" name="cooking_duration" required>
                     <option value="" disabled selected>Choose the cooking duration</option>
                         {% for dur in cooking_duration %}
-                            <option value="{{dur.cooking_duration}}">{{dur.cooking_duration}}</option>
+                            <option value="{{dur.cooking_duration}}">{{dur.cooking_duration}} mins</option>
                         {% endfor %}
                 s</select>
                 <label>Cooking duration</label>
@@ -63,8 +72,8 @@
             </div>
 
             <div class="input-field col s12">
-                <textarea placeholder="Please end each line with a '.' except for the last line. Ex: Cut the onions. Add the salt = 1. Cut the onions 2. Add the salt" name="recipe_instructions" class="materialize-textarea" required></textarea>
-                <label for="recipe_instructions">Recipe Description</label>
+                <textarea placeholder="End each line with a '.' except for the last line. Ex: Cut the onions. Add the salt = 1. Cut the onions 2. Add the salt" name="recipe_instructions" class="materialize-textarea" required></textarea>
+                <label for="recipe_instructions">Recipe Instructions</label>
             </div>
 
             <div class="input-field col s12">
@@ -72,16 +81,26 @@
                 <label for="ingredients">Ingredients</label>
             </div>
         </div>
-        <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe</button>
+        <div class="row submit-button">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe
+            <i class="material-icons right">add</i>
+            </button>
         </div>
 
     </form>
 </div>
 
-<div class="row">
-    <form class="col s2" action="{{ url_for('insert_serving_size') }}" method="POST">
-        <a class="waves-effect waves-light btn modal-trigger modal-button-styling" href="#modal1">Add</a>
+<div class="row add-category">
+
+    <h5>Need a new category? add them here</h5>
+
+
+    <form class="col s3" action="{{ url_for('insert_serves') }}" method="POST">
+        <p>Click below to add a new serving size</p>
+        <a class="waves-effect waves-light btn modal-trigger modal-button-styling" href="#modal1">Add
+        <i class="material-icons right">add</i>
+        </a>
+
 
 
         <div id="modal1" class="modal">
@@ -95,7 +114,9 @@
 
 
                 <div class="modal-footer">
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Add serving size</button>
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Add serving size
+                    <i class="material-icons right">add</i>
+                    </button>
                 </div>
 
             </div>
@@ -106,8 +127,11 @@
 
 
 
-    <form class="col s2" action="{{ url_for('insert_cooking_duration') }}" method="POST">
-        <a class="waves-effect waves-light btn modal-trigger modal-button-styling" href="#modal2">Add</a>
+    <form class="col s3" action="{{ url_for('insert_cooking_duration') }}" method="POST">
+        <p>Click below to add a new cooking duration</p>
+        <a class="waves-effect waves-light btn modal-trigger modal-button-styling" href="#modal2">Add
+        <i class="material-icons right">add</i>
+        </a>
 
 
         <div id="modal2" class="modal">
@@ -121,13 +145,18 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add cooking duration</button>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Add cooking duration
+                <i class="material-icons right">add</i>
+                </button>
             </div>
         </div>
     </form>
 
-    <form class="col s2" action="{{ url_for('insert_cuisine_type') }}" method="POST">
-        <a class="waves-effect waves-light btn modal-trigger modal-button-styling" href="#modal3">Add</a>
+    <form class="col s3" action="{{ url_for('insert_cuisine_type') }}" method="POST">
+        <p>Click below to add a new cuisine type</p>
+        <a class="waves-effect waves-light btn modal-trigger modal-button-styling" href="#modal3">Add
+        <i class="material-icons right">add</i>
+        </a>
 
 
         <div id="modal3" class="modal">
@@ -139,23 +168,30 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add cuisine type</button>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Add cuisine type
+                <i class="material-icons right">add</i>
+                </button>
             </div>
         </div>
     </form>
 
-    <form class="col s2" action="{{ url_for('insert_meal_type') }}" method="POST">
-        <a class="waves-effect waves-light btn modal-trigger modal-button-styling" href="#modal4">Add</a>
+    <form class="col s3" action="{{ url_for('insert_meal_type') }}" method="POST">
+        <p>Click below to add a new meal type</p>
+        <a class="waves-effect waves-light btn modal-trigger modal-button-styling" href="#modal4">Add
+        <i class="material-icons right">add</i>
+        </a>
 
 
         <div id="modal4" class="modal">
             <div class="modal-content">
                 <h4>Add a new meal type</h4>
                 <p>Add a new meal type in the box below.</p>
-                <input id="meal_type" name=meal_type" type="text">
+                <input id="meal_type" name="meal_type" type="text">
             </div>
             <div class="modal-footer">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add a meal type</button>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Add a meal type
+                <i class="material-icons right">add</i>
+                </button>
             </div>
         </div>
     </form>

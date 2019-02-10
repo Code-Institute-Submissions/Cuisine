@@ -16,12 +16,28 @@ footer {
     padding: 0px;
 }
 
+body {
+    margin-bottom: 50px;
+    min-height: 100%;
+    font-family: 'Montserrat', sans-serif;
 
+}
+
+footer {
+    background-color: #ada3a3;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 50px;
+    margin-bottom: 0px;
+    z-index: 1;
+}
 
 /* Navbar */
 
 nav {
-    background-color: #ada3a3c4;
+    background-color: #ada3a3;
     font-family: 'Libre Baskerville', serif;
 }
 
@@ -42,7 +58,7 @@ nav {
 }
 
 .parallax {
-  position:static;
+    position: static;
 }
 
 /* recipe card */
@@ -50,14 +66,13 @@ nav {
 .recipe-card {
     margin: 5px;
     background-color: white;
-    font-family: 'Montserrat', sans-serif;
     padding: 4px 4px 9px 4px;
 
 }
 
 .recipe-card-border {
     border: 1px solid black;
-    background-color: #ada3a3c4;
+    background-color: #ada3a3;
     height: 75%;
     margin: 10px 5px 10px 5px;
     display: inline-block;
@@ -69,7 +84,7 @@ nav {
 }
 
 .recipe {
-    font-weight: bold; 
+    font-weight: bold;
     display: inline;
 }
 
@@ -83,6 +98,28 @@ nav {
     margin: 15px 20px;
 }
 
+.submit-button {
+    text-align: center;
+}
+
+.prompt {
+    margin: 20px 0px;
+}
+
+.add-category {
+    margin: 20px 0px 0px 50px;
+}
+
+.range-field{
+    margin: 30px 0px;
+}
+
+#flash-messages {
+    background-color: #ffea48;
+    border-radius: 25px;
+    padding: 10px;
+    text-align: center;
+}
 
 /* Media queries */
 
