@@ -1,33 +1,66 @@
 {% extends 'base.html'%} {% block content %}
 
-<div class="row">
-
-    <div class="recipe-info">
-        <h2 name="recipe_name" id="recipe_name">{{ recipe.recipe_name }}</h2>
 
 
+<div class="row recipe-container">
+
+    <div class="col s8 offset-s2" id="recipe-card-full">
+
+        <div class="row">
+            <div class="recipe-info ">
+                <h3 name="recipe_name " id="recipe_name ">{{ recipe.recipe_name.capitalize() }}</h3>
+            </div>
+        </div>
+
+        <div class="row recipe-category-info">
+
+
+            <div class="col s3">
+                <p><i class="material-icons">restaurant</i>: {{ recipe.meal_type.capitalize() }}</p>
+            </div>
+            <div class="col s3">
+                <p><i class="material-icons">flag</i>: {{ recipe.cuisine_type.capitalize() }}</p>
+            </div>
+            <div class="col s3">
+                <p><i class="material-icons">av_timer</i>: {{ recipe.cooking_duration }} mins</p>
+            </div>
+            <div class="col s3">
+                <p><i class="material-icons">person</i>: {{ recipe.serves }}</p>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <p> {{ recipe.recipe_description }}</p>
+
+        </div>
+
+        <div class="row ">
+            <div class="recipe-ingredients ">
+                <p name="recipe_name " id="recipe_name ">
+                    {%for ingredient in recipe.ingredients.split(", ") %}
+
+                    <li>{{ ingredient }}</li>
+
+                    {% endfor %}
+                </p>
+
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="recipe-instructions ">
+                <p name="recipe_name " id="recipe_name ">
+                    {%for item in recipe.recipe_instructions.split(". ") %}
+
+                    <li>{{ loop.index }}. {{ item }}</li>
+
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
 
     </div>
 </div>
-<div class="row">
-    <div class="recipe-ingredients">
-        
-       
-    </div>
-</div>
-<div class="row">
-    <div class="recipe-instructions">
-    <p name="recipe_name" id="recipe_name">   
-    {%for item in recipe.recipe_instructions.split(".") %}
-    
-    <li>{{ loop.index }}. {{ item }}</li>
-    
-    {% endfor %}
-    
-    
-    </p>
-
-    </div>
-</div>
-
 {% endblock %}

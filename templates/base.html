@@ -31,7 +31,7 @@
             </li>
 
             <li><a href="{{url_for('add_recipe')}}">Add a new recipe </a></li>
-           
+
         </ul>
         <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
         <span id="logo-image-smaller">
@@ -43,12 +43,51 @@
 
 <body>
     <main>
+        
+        {% if request.endpoint == 'get_recipes' %}
+        
+        <div class="parallax-container">
+            <div class="parallax"><img src="{{url_for('static', filename='images/index.png')}}"></div>
+        </div>
+        
+        {% elif request.endpoint =='recipe' %}
+        
+        <div class="parallax-container">
+            <div class="parallax"><img src="{{url_for('static', filename='images/recipe.png')}}"></div>
+        </div>
+        
+        {% else %}
+        
+        {% endif %}
+        
         <div class="container-fluid">
             {% block content %} {% endblock %}
         </div>
-    </main>
-    <footer>
         
+        {% if request.endpoint == 'get_recipes' %}
+        
+        <div class="parallax-container">
+            <div class="parallax"><img src="{{url_for('static', filename='images/index.png')}}"></div>
+        </div>
+        
+        {% elif request.endpoint =='recipe' %}
+        
+        <div class="parallax-container">
+            <div class="parallax"><img src="{{url_for('static', filename='images/recipe.png')}}"></div>
+        </div>
+        
+        {% else %}
+        
+        {% endif %}
+    
+    </main>
+    <footer class="page-footer">
+        <div class="footer-copyright">
+            <div class="container">
+                © 2019 Copyright Text
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+        </div>
     </footer>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -56,12 +95,12 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $(".button-collapse").sideNav();
-        $('.parallax').parallax();
         $('select').material_select();
         $('#modal1').modal();
         $('#modal2').modal();
         $('#modal3').modal();
         $('#modal4').modal();
+        $('.parallax').parallax();
     });
 </script>
 

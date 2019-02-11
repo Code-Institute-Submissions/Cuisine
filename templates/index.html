@@ -1,8 +1,10 @@
 {% extends 'base.html'%} {% block content %}
 
-<div class="parallax-container">
-    <div class="parallax"><img src="static/images/index-parallax.jpg"></div>
-</div>
+
+
+
+
+
 
 <div class="row recipe-card-spacing">
     {% for recipe in recipes %}
@@ -18,11 +20,13 @@
             <p>Meal:
                 <p class="recipe">{{recipe.meal_type.capitalize()}}</p>
             </p>
-            
+
             <a href="{{url_for('recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small">Recipe</a>
         </div>
     </div>
     {% endfor %}
 </div>
+
+
 
 {% endblock %}
