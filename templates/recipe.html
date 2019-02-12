@@ -16,16 +16,16 @@
 
 
             <div class="col s3">
-                <p><i class="material-icons">restaurant</i>: {{ recipe.meal_type.capitalize() }}</p>
+                <p><i class="material-icons category-icon">restaurant</i>: {{ recipe.meal_type.capitalize() }}</p>
             </div>
             <div class="col s3">
-                <p><i class="material-icons">flag</i>: {{ recipe.cuisine_type.capitalize() }}</p>
+                <p><i class="material-icons category-icon">flag</i>: {{ recipe.cuisine_type.capitalize() }}</p>
             </div>
             <div class="col s3">
-                <p><i class="material-icons">av_timer</i>: {{ recipe.cooking_duration }} mins</p>
+                <p><i class="material-icons category-icon">av_timer</i>: {{ recipe.cooking_duration }} mins</p>
             </div>
             <div class="col s3">
-                <p><i class="material-icons">person</i>: {{ recipe.serves }}</p>
+                <p><i class="material-icons category-icon">person</i>: {{ recipe.serves }}</p>
             </div>
 
         </div>
@@ -50,7 +50,7 @@
         </div>
 
         <div class="row ">
-            <div class="recipe-instructions ">
+            <div class="recipe-instructions">
                 <p name="recipe_name " id="recipe_name ">
                     {%for item in recipe.recipe_instructions.split(". ") %}
 
@@ -59,6 +59,10 @@
                     {% endfor %}
                 </p>
             </div>
+        </div>
+        
+        <div class="row ">
+            <p>{{ recipe.author }}</p>
         </div>
 
     </div>

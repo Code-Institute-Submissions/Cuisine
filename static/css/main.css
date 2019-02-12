@@ -73,6 +73,7 @@ nav {
     border: 5px solid black;
     margin-top: 15px;
     margin-bottom: 15px;
+    font-size: 15px;
 }
 
 .recipe-container {
@@ -80,15 +81,21 @@ nav {
     margin-bottom: 0px;
 }
 
+.category-icon {
+    vertical-align: bottom;
+    padding: 0px 4px 0px 0px;
+}
 
-
-
+.recipe-instructions {
+    border: 3px solid black;
+    padding: 4px 10px 2px 18px
+}
 
 
 /* recipe card */
 
 .recipe-card {
-    margin: 5px;
+    margin: 17px 10px;
     background-color: white;
     padding: 4px 4px 9px 4px;
 
@@ -102,6 +109,8 @@ nav {
     margin: 10px 5px 10px 5px;
     display: inline-block;
 
+
+
 }
 
 .recipe-card-spacing {
@@ -111,6 +120,11 @@ nav {
 .recipe {
     font-weight: bold;
     display: inline;
+    
+}
+
+.recipe-info-card {
+    margin: 12px 8px 12px 8px;
 }
 
 /* add recipe */

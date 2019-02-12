@@ -25,11 +25,15 @@ def get_recipes():
     return render_template("index.html", 
         recipes=mongo.db.recipes.find())
 
+
+
 @app.route('/recipe/<recipe_id>')
 def recipe(recipe_id):
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     
     return render_template("recipe.html", recipe=the_recipe)
+
+
 
 @app.route('/add_recipe')
 def add_recipe():
@@ -39,11 +43,34 @@ def add_recipe():
     cuisine_type=mongo.db.cuisine_type.find(),
     meal_type=mongo.db.meal_type.find())
 
+
+
+
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
+    
     recipes =  mongo.db.recipes
-    recipes.insert_one(request.form.to_dict())
+    authors = mongo.db.authors
+    
+    current_authors = []
+    
+    for author in authors.find().distinct('author'):
+        current_authors.append(author)
+    
+    current_authors_string = ', '.join(current_authors).lower()
+    
+    new_author = request.form.get('author').lower()
+    
+    if request.method == 'POST':
+        
+        recipes.insert_one(request.form.to_dict())
+        
+        if new_author not in current_authors_string:
+            authors.insert([{ "author": request.form['author']}])
+       
     return redirect(url_for('get_recipes'))
+
+
 
 @app.route('/insert_serves', methods=["POST"])
 def insert_serves():
@@ -59,8 +86,6 @@ def insert_serves():
     
     new_serves_size = request.form.get('serves')
     
-    
-    
     if request.method == 'POST':
         if new_serves_size not in current_serves_size_string:
             serves_size.insert_one(request.form.to_dict())
@@ -68,6 +93,8 @@ def insert_serves():
             flash("We already have a serving size for '{}' people".format(new_serves_size))
     
     return redirect(url_for('add_recipe'))
+
+
 
 @app.route('/insert_cooking_duration', methods=["POST"])
 def insert_cooking_duration():
@@ -92,6 +119,10 @@ def insert_cooking_duration():
     
     return redirect(url_for('add_recipe'))
     
+
+
+
+
 @app.route('/insert_cuisine_type', methods=["POST"])
 def insert_cuisine_type():
     cuisine_types = mongo.db.cuisine_type
@@ -115,6 +146,10 @@ def insert_cuisine_type():
     
     return redirect(url_for('add_recipe'))
     
+
+
+
+
 @app.route('/insert_meal_type', methods=["POST"])
 def insert_meal_type():
    
@@ -139,6 +174,9 @@ def insert_meal_type():
     
     return redirect(url_for('add_recipe'))
     
+
+
+
 
 
 if __name__ == '__main__':

@@ -9,19 +9,51 @@
 <div class="row recipe-card-spacing">
     {% for recipe in recipes %}
     <div class="col s12 m6 l3 recipe-card-border">
-        <div class="recipe-card">
-            <p class="recipe">{{recipe.recipe_name.capitalize()}}</p>
-            <p>Cooking time:
-                <p class="recipe">{{recipe.cooking_duration}}</p>
-            </p>
-            <p>Cuisine:
-                <p class="recipe">{{recipe.cuisine_type.capitalize()}}</p>
-            </p>
-            <p>Meal:
-                <p class="recipe">{{recipe.meal_type.capitalize()}}</p>
-            </p>
+        <div class="row recipe-card">
 
-            <a href="{{url_for('recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small">Recipe</a>
+            <div class="col s12">
+                <p class="recipe">{{recipe.recipe_name.capitalize()}}</p>
+            </div>
+
+            <div class="row recipe-info-card">
+                <div class="col s2">
+                    <i class="material-icons category-icon">restaurant</i>
+                </div>
+
+                <div class="col s6">
+                    <p class="recipe">{{recipe.meal_type}}</p>
+                </div>
+            </div>
+
+            <div class="row recipe-info-card">
+                <div class="col s2">
+                    <i class="material-icons category-icon">flag</i>
+                </div>
+                <div class="col s6">
+                    <p class="recipe">{{recipe.cuisine_type.capitalize()}}</p>
+                </div>
+            </div>
+
+            <div class="row recipe-info-card">
+                <div class="col s2">
+                    <i class="material-icons category-icon">av_timer</i>
+                </div>
+                <div class="col s6">
+                    <p class="recipe">{{recipe.cooking_duration}}</p>
+                </div>
+            </div>
+
+            <div class="row recipe-info-card">
+                <div class="col s2">
+                    <i class="material-icons category-icon">person</i>
+                </div>
+                <div class="col s6">
+                    <p class="recipe">{{recipe.serves}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <a href="{{url_for('recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small">Recipe</a>
+            </div>
         </div>
     </div>
     {% endfor %}
