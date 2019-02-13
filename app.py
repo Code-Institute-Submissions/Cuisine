@@ -9,6 +9,8 @@ from bson.objectid import ObjectId
 
 
 
+
+
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'recipesdb'
 app.config["MONGO_URI"] = 'mongodb://admin-1:family_recipes1@ds125125.mlab.com:25125/recipesdb'
@@ -37,11 +39,13 @@ def recipe(recipe_id):
 
 @app.route('/add_recipe')
 def add_recipe():
+    """ Shows the addrecipe.html template, and supplies it with the current values stored within each collection"""
+    """ Currently only the cuisine type and meal type collections returned sorted results"""
     return render_template('addrecipe.html', 
-    serves=mongo.db.serves.find(), 
+    serves = mongo.db.serves.find(), 
     cooking_duration=mongo.db.cooking_duration.find(), 
-    cuisine_type=mongo.db.cuisine_type.find(),
-    meal_type=mongo.db.meal_type.find())
+    cuisine_type=mongo.db.cuisine_type.find().sort("cuisine_type", 1),
+    meal_type=mongo.db.meal_type.find().sort("meal_type", 1))
 
 
 
@@ -83,11 +87,10 @@ def insert_serves():
             
     current_serves_size_string = ', '.join(current_serves_size_list)
         
-    
     new_serves_size = request.form.get('serves')
     
     if request.method == 'POST':
-        if new_serves_size not in current_serves_size_string:
+        if new_serves_size not in current_serves_size_list:
             serves_size.insert_one(request.form.to_dict())
         else:
             flash("We already have a serving size for '{}' people".format(new_serves_size))

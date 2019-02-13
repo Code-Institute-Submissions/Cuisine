@@ -97,24 +97,24 @@
 
 <div class="row add-category">
 
-    <h5>Need a new category? add them here</h5>
+    <h4 class="add-category-title">Need a new category? add them here</h4>
 
 
     <form class="col s3" action="{{ url_for('insert_serves') }}" method="POST">
         <p>Click below to add a new serving size</p>
-        <a class="waves-effect waves-light btn modal-trigger modal-button-styling" href="#modal1">Add
+        <a class="waves-effect waves-light btn modal-trigger modal-button-styling category-input" href="#modal1">Add
         <i class="material-icons right">add</i>
         </a>
 
 
 
         <div id="modal1" class="modal">
-            <div class="modal-content">
+            <div class="modal-content input-field">
                 <h4>Add a new serving size</h4>
-                <p>Add a new serving size using the slider below.</p>
+                <p>Add a new serving size (in minutes) using the slider below.</p>
 
                 <p class="range-field">
-                    <input type="range" id="serves" name="serves" min="8" max="50" step="2" />
+                    <input type="range" id="serves" name="serves" min="8" max="50" step="1" />
                 </p>
 
 
@@ -130,19 +130,17 @@
 
     </form>
 
-
-
     <form class="col s3" action="{{ url_for('insert_cooking_duration') }}" method="POST">
         <p>Click below to add a new cooking duration</p>
-        <a class="waves-effect waves-light btn modal-trigger modal-button-styling" href="#modal2">Add
+        <a class="waves-effect waves-light btn modal-trigger modal-button-styling category-input" href="#modal2">Add
         <i class="material-icons right">add</i>
         </a>
 
 
         <div id="modal2" class="modal">
-            <div class="modal-content">
+            <div class="modal-content input-field">
                 <h4>Add a new cooking duration</h4>
-                <p>Add a new cooking duration using the slider below below.</p>
+                <p>Add a new cooking duration (in minutes) using the slider below below.</p>
                 <form action="" method="POST">
                     <p class="range-field">
                         <input type="range" id="cooking_duration" name="cooking_duration" min="120" max="360" step="15" />
@@ -159,13 +157,13 @@
 
     <form class="col s3" action="{{ url_for('insert_cuisine_type') }}" method="POST">
         <p>Click below to add a new cuisine type</p>
-        <a class="waves-effect waves-light btn modal-trigger modal-button-styling" href="#modal3">Add
+        <a class="waves-effect waves-light btn modal-trigger modal-button-styling category-input" href="#modal3">Add
         <i class="material-icons right">add</i>
         </a>
 
 
         <div id="modal3" class="modal">
-            <div class="modal-content">
+            <div class="modal-content input-field">
                 <h4>Add a new cuisine type</h4>
                 <p>Add a new cuisine type in the box below.</p>
                 <input id="cuisine_type" name="cuisine_type" type="text">
@@ -182,13 +180,13 @@
 
     <form class="col s3" action="{{ url_for('insert_meal_type') }}" method="POST">
         <p>Click below to add a new meal type</p>
-        <a class="waves-effect waves-light btn modal-trigger modal-button-styling" href="#modal4">Add
+        <a class="waves-effect waves-light btn modal-trigger modal-button-styling category-input" href="#modal4">Add
         <i class="material-icons right">add</i>
         </a>
 
 
         <div id="modal4" class="modal">
-            <div class="modal-content">
+            <div class="modal-content input-field">
                 <h4>Add a new meal type</h4>
                 <p>Add a new meal type in the box below.</p>
                 <input id="meal_type" name="meal_type" type="text">

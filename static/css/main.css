@@ -19,6 +19,10 @@ main {
     flex: 1 0 auto;
 }
 
+.btn {
+    background-color: #e80c79;
+}
+
 /* Navbar */
 
 nav {
@@ -120,7 +124,7 @@ nav {
 .recipe {
     font-weight: bold;
     display: inline;
-    
+
 }
 
 .recipe-info-card {
@@ -146,7 +150,13 @@ nav {
 }
 
 .add-category {
-    margin: 20px 0px 0px 50px;
+    margin-bottom: 0px;
+    background-color: #eb007924;
+    padding: 20px;
+}
+
+.add-category-title {
+    margin: 10px 0px 0px 0px;
 }
 
 .range-field {
@@ -159,6 +169,40 @@ nav {
     padding: 10px;
     text-align: center;
 }
+
+.category-input {
+    margin: 30px 0px;
+}
+
+.input-field input:focus+label, textarea:focus+label {
+    color: #e80c79 !important;
+}
+
+
+
+.input-field input:focus, textarea:focus {
+    border-bottom: 1px solid #e80c79 !important;
+    box-shadow: 0 1px 0 0 #e80c79 !important;
+}
+
+.dropdown-content li>a, .dropdown-content li>span {
+    color: #e80c79;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    background-color: #e80c79;
+}
+
+input[type=range]+.thumb {
+     background-color: #e80c79;
+}
+
+
+
+
+
+
+
 
 /* footer */
 
