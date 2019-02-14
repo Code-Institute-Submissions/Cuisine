@@ -4,7 +4,7 @@
 
 <div class="row recipe-container">
 
-    <div class="col s8 offset-s2" id="recipe-card-full">
+    <div class="col s12 m8 offset-m2 l8 offset-l2" id="recipe-card-full">
 
         <div class="row">
             <div class="recipe-info ">
@@ -12,23 +12,7 @@
             </div>
         </div>
 
-        <div class="row recipe-category-info">
 
-
-            <div class="col s3">
-                <p><i class="material-icons category-icon">restaurant</i>: {{ recipe.meal_type.capitalize() }}</p>
-            </div>
-            <div class="col s3">
-                <p><i class="material-icons category-icon">flag</i>: {{ recipe.cuisine_type.capitalize() }}</p>
-            </div>
-            <div class="col s3">
-                <p><i class="material-icons category-icon">av_timer</i>: {{ recipe.cooking_duration }} mins</p>
-            </div>
-            <div class="col s3">
-                <p><i class="material-icons category-icon">person</i>: {{ recipe.serves }}</p>
-            </div>
-
-        </div>
 
         <div class="row">
 
@@ -37,7 +21,7 @@
         </div>
 
         <div class="row ">
-            <div class="recipe-ingredients ">
+            <div class=" col s6 recipe-ingredients ">
                 <p name="recipe_name " id="recipe_name ">
                     {%for ingredient in recipe.ingredients.split(", ") %}
 
@@ -47,6 +31,25 @@
                 </p>
 
             </div>
+
+            <div class="col s6 recipe-category-info">
+
+                <div class- "row">
+                    <div class="col s12">
+                        <p><i class="material-icons category-icon tooltipped" data-position="top" data-delay="30" data-tooltip="The type of meal this is">restaurant</i>: {{ recipe.meal_type.capitalize() }}</p>
+                    </div>
+                    <div class="col s12">
+                        <p><i class="material-icons category-icon tooltipped" data-position="top" data-delay="30" data-tooltip="Where this recipe comes from or the style of food">flag</i>: {{ recipe.cuisine_type.capitalize() }}</p>
+                    </div>
+                    <div class="col s12">
+                        <p><i class="material-icons category-icon tooltipped" data-position="top" data-delay="30" data-tooltip="The amount of time this food will take to prepare and cook">av_timer</i>: {{ recipe.cooking_duration }} mins</p>
+                    </div>
+                    <div class="col s12">
+                        <p><i class="material-icons category-icon tooltipped" data-position="top" data-delay="30" data-tooltip="The amount of people this recipe will serve">person</i>: {{ recipe.serves }}</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div class="row ">
@@ -60,9 +63,10 @@
                 </p>
             </div>
         </div>
-        
-        <div class="row ">
-            <p>{{ recipe.author }}</p>
+
+        <div class="row">
+            <p class="col s4 m4 l3">Author:</p>
+            <p class="col s6 m4 l4 underline">{{ recipe.author }}</p>
         </div>
 
     </div>

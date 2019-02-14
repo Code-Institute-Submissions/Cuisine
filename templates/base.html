@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Montserrat:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" type="text/css" />
 </head>
 <header>
@@ -21,11 +22,80 @@
             <li><a class='dropdown-button' href='#' data-activates='dropdown1'>Refine results</a>
 
                 <ul id='dropdown1' class='dropdown-content'>
-                    <li><a href="#!">Cooking Duration</a></li>
-                    <li><a href="#!">Cuisine Type</a></li>
-                    <li><a href="#!">Meal Type</a></li>
-                    <li><a href="#!">Serves</a></li>
 
+                    <li>
+                        <p disabled selected>Hover over to choose an option</p>
+                    </li>
+
+                    <li>
+                        <a class='dropdown-inner-button' href='#' data-activates='dropdown2'>Cooking Duration</a>
+
+                        <ul id='dropdown2' class='dropdown-content'>
+                            
+                            {% for dur in cooking_duration %}
+                            
+                            <li><a href="#!" value="{{dur.cooking_duration}}">{{dur.cooking_duration}} mins</a></li>
+                            
+                            {% endfor %}
+                        
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a class='dropdown-inner-button' href='#' data-activates='dropdown3'>Meal Type</a>
+
+                        <ul id='dropdown3' class='dropdown-content'>
+                            
+                            {% for type in meal_type %}
+                            
+                            <li><a href="#!" value="{{type.meal_type}}">{{type.meal_type}}</a></li>
+                            
+                            {% endfor %}
+                        
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a class='dropdown-inner-button' href='#' data-activates='dropdown4'>Cuisine Type</a>
+
+                        <ul id='dropdown4' class='dropdown-content'>
+                            
+                            {% for type in cuisine_type %}
+                            
+                            <li><a href="#!" value="{{type.cusine_type}}">{{type.cuisine_type}}</a></li>
+                            
+                            {% endfor %}
+                        
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a class='dropdown-inner-button' href='#' data-activates='dropdown5'>Serving size</a>
+
+                        <ul id='dropdown5' class='dropdown-content'>
+                            
+                            {% for size in serves %}
+                            
+                            <li><a href="#!" value="{{size.serves}}">{{size.serves}} people</a></li>
+                            
+                            {% endfor %}
+                        
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a class='dropdown-inner-button' href='#' data-activates='dropdown6'>Authors</a>
+
+                        <ul id='dropdown6' class='dropdown-content'>
+                            
+                            {% for author in authors %}
+                            
+                            <li><a href="#!" value="{{author.authors}}">{{author.authors}}</a></li>
+                            
+                            {% endfor %}
+                        
+                        </ul>
+                    </li>
 
                 </ul>
             </li>
@@ -43,61 +113,59 @@
 
 <body>
     <main>
-        
+
         {% if request.endpoint == 'get_recipes' %}
-        
+
         <div class="parallax-container">
             <div class="parallax"><img src="{{url_for('static', filename='images/index.png')}}"></div>
         </div>
-        
+
         {% elif request.endpoint =='recipe' %}
-        
+
         <div class="parallax-container">
             <div class="parallax"><img src="{{url_for('static', filename='images/recipe.png')}}"></div>
         </div>
-        
+
         {% elif request.endpoint =='add_recipe' %}
-        
+
         <div class="parallax-container">
             <div class="parallax"><img src="{{url_for('static', filename='images/add_recipe.png')}}"></div>
         </div>
-        
-        {% else %}
-        
-        {% endif %}
-        
+
+        {% else %} {% endif %}
+
         <div class="container-fluid">
             {% block content %} {% endblock %}
         </div>
-        
+
         {% if request.endpoint == 'get_recipes' %}
-        
+
         <div class="parallax-container">
             <div class="parallax"><img src="{{url_for('static', filename='images/index.png')}}"></div>
         </div>
-        
+
         {% elif request.endpoint =='recipe' %}
-        
+
         <div class="parallax-container">
             <div class="parallax"><img src="{{url_for('static', filename='images/recipe.png')}}"></div>
         </div>
-        
+
         {% elif request.endpoint =='add_recipe' %}
-        
+
         <div class="parallax-container">
             <div class="parallax"><img src="{{url_for('static', filename='images/add_recipe.png')}}"></div>
         </div>
-        
-        {% else %}
-        
-        {% endif %}
-    
+
+        {% else %} {% endif %}
+
     </main>
     <footer class="page-footer">
         <div class="footer-copyright">
             <div class="container">
                 © 2019 Copyright Text
-                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+                <a class="grey-text text-lighten-4 right footer-icon" href="#!"><i class="fab fa-github-square"></i></a>
+                <a class="grey-text text-lighten-4 right footer-icon" href="#!"><i class="fab fa-facebook"></i></a>
+                <a class="grey-text text-lighten-4 right footer-icon" href="#!"><i class="fab fa-twitter-square"></i></a>
             </div>
         </div>
     </footer>
@@ -113,6 +181,9 @@
         $('#modal3').modal();
         $('#modal4').modal();
         $('.parallax').parallax();
+        $('.collapsible').collapsible();
+        $('.dropdown-button').dropdown({ hover: false });
+        $('.dropdown-inner-button').dropdown({ hover: true });
     });
 </script>
 
