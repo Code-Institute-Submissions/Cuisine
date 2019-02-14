@@ -17,90 +17,9 @@
         <ul id="slide-out" class="side-nav fixed">
             <a href="{{url_for('get_recipes')}}"><img class="logo-image" src="{{url_for('static', filename='images/logo.png')}}"></a>
             <li><a href="{{url_for('get_recipes')}}">Home</a></li>
-
-
-            <li><a class='dropdown-button' href='#' data-activates='dropdown1'>Refine results</a>
-
-                <ul id='dropdown1' class='dropdown-content'>
-
-                    <li>
-                        <p disabled selected>Hover over to choose an option</p>
-                    </li>
-
-                    <li>
-                        <a class='dropdown-inner-button' href='#' data-activates='dropdown2'>Cooking Duration</a>
-
-                        <ul id='dropdown2' class='dropdown-content'>
-                            
-                            {% for dur in cooking_duration %}
-                            
-                            <li><a href="#!" value="{{dur.cooking_duration}}">{{dur.cooking_duration}} mins</a></li>
-                            
-                            {% endfor %}
-                        
-                        </ul>
-                    </li>
-                    
-                    <li>
-                        <a class='dropdown-inner-button' href='#' data-activates='dropdown3'>Meal Type</a>
-
-                        <ul id='dropdown3' class='dropdown-content'>
-                            
-                            {% for type in meal_type %}
-                            
-                            <li><a href="#!" value="{{type.meal_type}}">{{type.meal_type}}</a></li>
-                            
-                            {% endfor %}
-                        
-                        </ul>
-                    </li>
-                    
-                    <li>
-                        <a class='dropdown-inner-button' href='#' data-activates='dropdown4'>Cuisine Type</a>
-
-                        <ul id='dropdown4' class='dropdown-content'>
-                            
-                            {% for type in cuisine_type %}
-                            
-                            <li><a href="#!" value="{{type.cusine_type}}">{{type.cuisine_type}}</a></li>
-                            
-                            {% endfor %}
-                        
-                        </ul>
-                    </li>
-                    
-                    <li>
-                        <a class='dropdown-inner-button' href='#' data-activates='dropdown5'>Serving size</a>
-
-                        <ul id='dropdown5' class='dropdown-content'>
-                            
-                            {% for size in serves %}
-                            
-                            <li><a href="#!" value="{{size.serves}}">{{size.serves}} people</a></li>
-                            
-                            {% endfor %}
-                        
-                        </ul>
-                    </li>
-                    
-                    <li>
-                        <a class='dropdown-inner-button' href='#' data-activates='dropdown6'>Authors</a>
-
-                        <ul id='dropdown6' class='dropdown-content'>
-                            
-                            {% for author in authors %}
-                            
-                            <li><a href="#!" value="{{author.authors}}">{{author.authors}}</a></li>
-                            
-                            {% endfor %}
-                        
-                        </ul>
-                    </li>
-
-                </ul>
-            </li>
-
-            <li><a href="{{url_for('add_recipe')}}">Add a new recipe </a></li>
+            <li><a href="{{url_for('search_recipes')}}">Search for a recipe</a></li>
+            <li><a href="{{url_for('add_recipe')}}">Add a new recipe</a></li>
+            
 
         </ul>
         <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -162,7 +81,7 @@
     <footer class="page-footer">
         <div class="footer-copyright">
             <div class="container">
-                © 2019 Copyright Text
+                <p class="adds-margin left">© 2019 Copyright Text</p>
                 <a class="grey-text text-lighten-4 right footer-icon" href="#!"><i class="fab fa-github-square"></i></a>
                 <a class="grey-text text-lighten-4 right footer-icon" href="#!"><i class="fab fa-facebook"></i></a>
                 <a class="grey-text text-lighten-4 right footer-icon" href="#!"><i class="fab fa-twitter-square"></i></a>

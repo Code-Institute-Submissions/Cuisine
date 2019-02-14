@@ -23,6 +23,10 @@ main {
     background-color: #e80c79;
 }
 
+.btn:hover, .btn-large:hover {
+    background-color: white;
+    color: black;
+}
 /* Navbar */
 
 nav {
@@ -39,9 +43,28 @@ nav {
     margin: 10px 0px;
 }
 
-
-
 /* index */
+
+.light-pink {
+    margin-bottom: 0px;
+    background-image: linear-gradient(#eb007924, white);
+}
+
+.welcome-message-box {
+    background-color: white;
+    height: 400px;
+    border: 3px solid black;
+}
+
+.welcome-message {
+    text-align: center;
+}
+
+.welcome-links {
+    margin: 35px 0px;
+}
+
+/* search recipes */
 
 .container_index {
     width: 100%;
@@ -91,7 +114,7 @@ nav {
 }
 
 .recipe-container {
-    background-color: #eb007924;
+    background-image: linear-gradient(#eb007924, white);
     margin-bottom: 0px;
 }
 
@@ -110,6 +133,9 @@ nav {
     
 }
 
+.recipe-buttons {
+    margin: 20px 0px 38px 0px;
+}
 /* recipe card (index) */
 
 .recipe-card {
@@ -133,6 +159,7 @@ nav {
 
 .recipe-card-spacing {
     padding: 0px 10px;
+    background-image: linear-gradient(#eb007924, white);
 }
 
 .recipe {
@@ -165,7 +192,7 @@ nav {
 
 .add-category {
     margin-bottom: 0px;
-    background-color: #eb007924;
+    background-image: linear-gradient(#eb007924, white);
     padding: 20px;
 }
 
@@ -233,6 +260,10 @@ input[type=range]+.thumb {
 
 .footer-icon i:hover {
     color: grey;
+}
+
+.adds-margin {
+    margin: 10px 0px;
 }
 /* Media queries */
 

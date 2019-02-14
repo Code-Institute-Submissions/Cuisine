@@ -183,7 +183,54 @@ def insert_meal_type():
     return redirect(url_for('add_recipe'))
     
 
+@app.route('/search_recipes')
+def search_recipes():
 
+    return render_template('searchrecipes.html', 
+        recipes=mongo.db.recipes.find(),
+        serves=mongo.db.serves.find(),
+        cooking_duration=mongo.db.cooking_duration.find(),
+        meal_type=mongo.db.meal_type.find(),
+        cuisine_type=mongo.db.cuisine_type.find(),
+        authors=mongo.db.author.find()
+        )
+
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+
+    the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    
+    
+    return render_template('editrecipe.html', 
+        recipe = the_recipe, 
+        recipe_description=mongo.db.recipe_description.find(),
+        recipe_instructions=mongo.db.recipe_instructions.find(),
+        serves=mongo.db.serves.find(),
+        cooking_duration=mongo.db.cooking_duration.find(),
+        meal_type=mongo.db.meal_type.find(),
+        cuisine_type=mongo.db.cuisine_type.find(),
+        authors=mongo.db.author.find()
+        )   
+
+
+@app.route('/update_recipe/<recipe_id>', methods=["POST"])
+def update_recipe(recipe_id):
+    recipes = mongo.db.recipes
+    
+    recipes.update( {'_id': ObjectId(recipe_id)},
+    {
+        'recipe_name':request.form.get('recipe_name'),
+        'serves':request.form.get('serves'),
+        'recipe_description': request.form.get('recipe_description'),
+        'recipe_instructions': request.form.get('recipe_instructions'),
+        'cooking_duration': request.form.get('cooking_duration'),
+        'cuisine_type':request.form.get('cuisine_type'),
+        'ingredients':request.form.get('ingredients'),
+        'meal_type':request.form.get('meal_type'),
+        'author':request.form.get('author'),
+        
+    })
+    return redirect(url_for('search_recipes')) 
 
 
 

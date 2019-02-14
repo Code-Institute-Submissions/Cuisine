@@ -1,0 +1,146 @@
+{% extends 'base.html'%} {% block content %}
+
+<div class="row recipe-card-spacing">
+    
+    {% for recipe in recipes %}
+    
+    <div class="col s12 m6 l3 recipe-card-border">
+        <div class="row recipe-card">
+
+            <div class="col s12">
+                <p class="recipe">{{recipe.recipe_name.capitalize()}}</p>
+            </div>
+
+            <div class="row recipe-info-card">
+                <div class="col s2">
+                    <i class="material-icons category-icon">restaurant</i>
+                </div>
+
+                <div class="col s6">
+                    <p class="recipe">{{recipe.meal_type}}</p>
+                </div>
+            </div>
+
+            <div class="row recipe-info-card">
+                <div class="col s2">
+                    <i class="material-icons category-icon">flag</i>
+                </div>
+                <div class="col s6">
+                    <p class="recipe">{{recipe.cuisine_type.capitalize()}}</p>
+                </div>
+            </div>
+
+            <div class="row recipe-info-card">
+                <div class="col s2">
+                    <i class="material-icons category-icon">av_timer</i>
+                </div>
+                <div class="col s6">
+                    <p class="recipe">{{recipe.cooking_duration}}</p>
+                </div>
+            </div>
+
+            <div class="row recipe-info-card">
+                <div class="col s2">
+                    <i class="material-icons category-icon">person</i>
+                </div>
+                <div class="col s6">
+                    <p class="recipe">{{recipe.serves}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <a href="{{url_for('recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn card-button">Recipe</a>
+            </div>
+        </div>
+    </div>
+    
+    {% endfor %}
+
+</div>
+
+
+{% endblock %}
+
+
+<!-- Dropdown to show results 
+
+
+<li><a class='dropdown-button' href='#' data-activates='dropdown1'>Refine results</a>
+
+                <ul id='dropdown1' class='dropdown-content'>
+
+                    <li>
+                        <p disabled selected>Hover over to choose an option</p>
+                    </li>
+
+                    <li>
+                        <a class='dropdown-inner-button' href='#' data-activates='dropdown2'>Cooking Duration</a>
+
+                        <ul id='dropdown2' class='dropdown-content'>
+                            
+                            {% for dur in cooking_duration %}
+                            
+                            <li><a href="#!" value="{{dur.cooking_duration}}">{{dur.cooking_duration}} mins</a></li>
+                            
+                            {% endfor %}
+                        
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a class='dropdown-inner-button' href='#' data-activates='dropdown3'>Meal Type</a>
+
+                        <ul id='dropdown3' class='dropdown-content'>
+                            
+                            {% for type in meal_type %}
+                            
+                            <li><a href="#!" value="{{type.meal_type}}">{{type.meal_type}}</a></li>
+                            
+                            {% endfor %}
+                        
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a class='dropdown-inner-button' href='#' data-activates='dropdown4'>Cuisine Type</a>
+
+                        <ul id='dropdown4' class='dropdown-content'>
+                            
+                            {% for type in cuisine_type %}
+                            
+                            <li><a href="#!" value="{{type.cusine_type}}">{{type.cuisine_type}}</a></li>
+                            
+                            {% endfor %}
+                        
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a class='dropdown-inner-button' href='#' data-activates='dropdown5'>Serving size</a>
+
+                        <ul id='dropdown5' class='dropdown-content'>
+                            
+                            {% for size in serves %}
+                            
+                            <li><a href="#!" value="{{size.serves}}">{{size.serves}} people</a></li>
+                            
+                            {% endfor %}
+                        
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a class='dropdown-inner-button' href='#' data-activates='dropdown6'>Authors</a>
+
+                        <ul id='dropdown6' class='dropdown-content'>
+                            
+                            {% for author in authors %}
+                            
+                            <li><a href="#!" value="{{author.authors}}">{{author.authors}}</a></li>
+                            
+                            {% endfor %}
+                        
+                        </ul>
+                    </li>
+
+                </ul>
+            </li> -->
