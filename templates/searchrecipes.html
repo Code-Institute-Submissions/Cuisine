@@ -2,7 +2,11 @@
 
 <div class="recipe-card-background-color">
     <div class="row">
+        
         {% for recipe in recipes %}
+        
+        
+        
 
         <div class="col s10 m5 l5 limit-width">
             <div class="recipe-card">
@@ -13,8 +17,8 @@
                 <div class="recipe-info-card container">
 
                     <div class="row recipe-description-stying">
-                        <a class='dropdown-inner-button recipe-dropdown-title' data-activates='dropdown1'>Recipe description</a>
-                        <ul id='dropdown1' class='dropdown-content'>
+                        <a class='dropdown-inner-button recipe-dropdown-title' data-activates='dropdown{{loop.index}}'>Recipe description</a>
+                        <ul id='dropdown{{loop.index}}' class='dropdown-content'>
                             <li><a value="{{recipe.recipe_description}}">{{recipe.recipe_description}}</a></li>
                         </ul>
                     </div>

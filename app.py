@@ -21,16 +21,9 @@ mongo = PyMongo(app)
 
 
 @app.route('/')
-@app.route('/get_recipes')
-def get_recipes():
-    return render_template("index.html", 
-        recipes=mongo.db.recipes.find(),
-        serves=mongo.db.serves.find(),
-        cooking_duration=mongo.db.cooking_duration.find(),
-        meal_type=mongo.db.meal_type.find(),
-        cuisine_type=mongo.db.cuisine_type.find(),
-        authors=mongo.db.author.find()
-        )
+@app.route('/welcome')
+def welcome():
+    return render_template("index.html")
 
 
 
@@ -77,7 +70,7 @@ def insert_recipe():
         if new_author not in current_authors_string:
             authors.insert([{ "author": request.form['author']}])
        
-    return redirect(url_for('get_recipes'))
+    return redirect(url_for('search_recipes'))
 
 
 
@@ -181,10 +174,19 @@ def insert_meal_type():
             flash("We already have a meal type called '{}'".format(new_meal_type))
     
     return redirect(url_for('add_recipe'))
+
+
+@app.route('/delete_recipe/<recipe_id>', methods=['POST', 'GET'])
+def delete_recipe(recipe_id):
     
+    mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+    
+    return redirect(url_for('search_recipes'))    
 
 @app.route('/search_recipes')
 def search_recipes():
+    
+    
 
     return render_template('searchrecipes.html', 
         recipes=mongo.db.recipes.find(),

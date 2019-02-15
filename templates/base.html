@@ -15,10 +15,10 @@
 <header>
     <nav>
         <ul id="slide-out" class="side-nav fixed">
-            <a href="{{url_for('get_recipes')}}"><img class="logo-image" src="{{url_for('static', filename='images/logo.png')}}"></a>
-            <li><a href="{{url_for('get_recipes')}}">Home</a></li>
-            <li><a href="{{url_for('search_recipes')}}">Search for a recipe</a></li>
-            <li><a href="{{url_for('add_recipe')}}">Add a new recipe</a></li>
+            <a href="{{url_for('welcome')}}"><img class="logo-image" src="{{url_for('static', filename='images/logo.png')}}"></a>
+            <li><a href="{{url_for('welcome')}}">Home</a></li>
+            <li><a href="{{url_for('search_recipes')}}">Search recipes</a></li>
+            <li><a href="{{url_for('add_recipe')}}">Add a recipe</a></li>
             
 
         </ul>
@@ -33,7 +33,7 @@
 <body>
     <main>
 
-        {% if request.endpoint == 'get_recipes' %}
+        {% if request.endpoint == 'welcome' %}
 
         <div class="parallax-container">
             <div class="parallax"><img src="{{url_for('static', filename='images/index.png')}}"></div>
@@ -69,7 +69,7 @@
             {% block content %} {% endblock %}
         </div>
 
-        {% if request.endpoint == 'get_recipes' %}
+        {% if request.endpoint == 'welcome' %}
 
         <div class="parallax-container">
             <div class="parallax"><img src="{{url_for('static', filename='images/index.png')}}"></div>
