@@ -50,6 +50,18 @@
         <div class="parallax-container">
             <div class="parallax"><img src="{{url_for('static', filename='images/add_recipe.png')}}"></div>
         </div>
+        
+        {% elif request.endpoint =='search_recipes' %}
+
+        <div class="parallax-container">
+            <div class="parallax"><img src="{{url_for('static', filename='images/search_recipe.png')}}"></div>
+        </div>
+        
+        {% elif request.endpoint =='edit_recipe' %}
+
+        <div class="parallax-container">
+            <div class="parallax"><img src="{{url_for('static', filename='images/edit_recipe.png')}}"></div>
+        </div>
 
         {% else %} {% endif %}
 
@@ -73,6 +85,18 @@
 
         <div class="parallax-container">
             <div class="parallax"><img src="{{url_for('static', filename='images/add_recipe.png')}}"></div>
+        </div>
+        
+        {% elif request.endpoint =='search_recipes' %}
+
+        <div class="parallax-container">
+            <div class="parallax"><img src="{{url_for('static', filename='images/search_recipe.png')}}"></div>
+        </div>
+        
+        {% elif request.endpoint =='edit_recipe' %}
+
+        <div class="parallax-container">
+            <div class="parallax"><img src="{{url_for('static', filename='images/edit_recipe.png')}}"></div>
         </div>
 
         {% else %} {% endif %}
