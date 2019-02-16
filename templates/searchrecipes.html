@@ -1,74 +1,94 @@
 {% extends 'base.html'%} {% block content %}
 
 <div class="recipe-card-background-color">
+
+
+
     <div class="row">
-        
-        {% for recipe in recipes %}
-        
-        
-        
+        <div class="col s10 offset-s1">
+            
+            <!-- Add nav bar type thing to enable users to refine serach results -->
+            
+        </div>
 
-        <div class="col s10 m5 l5 limit-width">
-            <div class="recipe-card">
-                <div class="recipe-title">
-                    <p class="recipe">{{recipe.recipe_name.capitalize()}}</p>
+
+
+    </div>
+
+    {% for recipe in recipes %}
+
+
+    <div class="col s10 m5 l5 limit-width">
+        <div class="recipe-card">
+            <div class="recipe-title">
+                <p class="recipe">{{recipe.recipe_name.capitalize()}}</p>
+            </div>
+            <div class="divider"></div>
+            <div class="recipe-info-card container">
+
+                <div class="row recipe-description-stying">
+                    <a class='dropdown-inner-button recipe-dropdown-title' data-activates='dropdown{{loop.index}}'>Recipe description</a>
+                    <ul id='dropdown{{loop.index}}' class='dropdown-content'>
+                        <li><a value="{{recipe.recipe_description}}">{{recipe.recipe_description}}</a></li>
+                    </ul>
                 </div>
-                <div class="divider"></div>
-                <div class="recipe-info-card container">
 
-                    <div class="row recipe-description-stying">
-                        <a class='dropdown-inner-button recipe-dropdown-title' data-activates='dropdown{{loop.index}}'>Recipe description</a>
-                        <ul id='dropdown{{loop.index}}' class='dropdown-content'>
-                            <li><a value="{{recipe.recipe_description}}">{{recipe.recipe_description}}</a></li>
-                        </ul>
+                <div class="row recipe-info-card">
+                    <div class="col s3">
+                        <p class="author-recipe-card">Author</p>
+                    </div>
+                    <div class="col s8">
+                        <p class="recipe">: {{recipe.author.capitalize()}}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s2">
+                        <i class="material-icons category-icon">restaurant</i>
                     </div>
 
-                    <div class="row">
-                        <div class="col s2">
-                            <i class="material-icons category-icon">restaurant</i>
-                        </div>
+                    <div class="col s6">
+                        <p class="recipe">{{recipe.meal_type}}</p>
+                    </div>
+                </div>
 
-                        <div class="col s6">
-                            <p class="recipe">{{recipe.meal_type}}</p>
-                        </div>
-                    </div>
 
-                    <div class="row recipe-info-card">
-                        <div class="col s2">
-                            <i class="material-icons category-icon">flag</i>
-                        </div>
-                        <div class="col s6">
-                            <p class="recipe">{{recipe.cuisine_type.capitalize()}}</p>
-                        </div>
+                <div class="row recipe-info-card">
+                    <div class="col s2">
+                        <i class="material-icons category-icon">flag</i>
                     </div>
+                    <div class="col s6">
+                        <p class="recipe">: {{recipe.cuisine_type.capitalize()}}</p>
+                    </div>
+                </div>
 
-                    <div class="row recipe-info-card">
-                        <div class="col s2">
-                            <i class="material-icons category-icon">av_timer</i>
-                        </div>
-                        <div class="col s6">
-                            <p class="recipe">{{recipe.cooking_duration}}</p>
-                        </div>
+                <div class="row recipe-info-card">
+                    <div class="col s2">
+                        <i class="material-icons category-icon">av_timer</i>
                     </div>
+                    <div class="col s6">
+                        <p class="recipe">: {{recipe.cooking_duration}}</p>
+                    </div>
+                </div>
 
-                    <div class="row recipe-info-card">
-                        <div class="col s2">
-                            <i class="material-icons category-icon">person</i>
-                        </div>
-                        <div class="col s6">
-                            <p class="recipe">{{recipe.serves}}</p>
-                        </div>
+                <div class="row recipe-info-card">
+                    <div class="col s2">
+                        <i class="material-icons category-icon">person</i>
                     </div>
-                    
-                    <div class="row recipe-link">
-                        <div class="divider"></div>
-                        <a href="{{url_for('recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn card-button">Full recipe</a>
+                    <div class="col s6">
+                        <p class="recipe">: {{recipe.serves}}</p>
                     </div>
+                </div>
+
+                <div class="row recipe-link">
+                    <div class="divider"></div>
+                    <a href="{{url_for('recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn card-button">Full recipe</a>
                 </div>
             </div>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
+</div>
 </div>
 {% endblock %}
 

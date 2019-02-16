@@ -185,16 +185,13 @@ def delete_recipe(recipe_id):
 
 @app.route('/search_recipes')
 def search_recipes():
-    
-    
-
     return render_template('searchrecipes.html', 
         recipes=mongo.db.recipes.find(),
         serves=mongo.db.serves.find(),
         cooking_duration=mongo.db.cooking_duration.find(),
         meal_type=mongo.db.meal_type.find(),
         cuisine_type=mongo.db.cuisine_type.find(),
-        authors=mongo.db.author.find()
+        authors=mongo.db.authors.find()
         )
 
 @app.route('/edit_recipe/<recipe_id>')
