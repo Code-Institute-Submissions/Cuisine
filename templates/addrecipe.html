@@ -2,13 +2,13 @@
 <div class="row">
 
     <h2 class="col s10 offset-s1">Add a new recipe</h2>
-    
+
     <div class="row">
         {% with messages = get_flashed_messages() %} {% for message in messages %}
         <div id="flash-messages" class="col s6 offset-s2" role="alert">{{ message }}</div>
         {% endfor %} {% endwith %}
     </div>
-    
+
     <form class="col s10 offset-s1 add-recipe" action="{{ url_for('insert_recipe') }}" method="POST">
         <div class="row">
             <div class="input-field col s12">
@@ -20,13 +20,13 @@
                 <textarea placeholder="Add a short description of your recipe" id="recipe_description" name="recipe_description" class="materialize-textarea" required></textarea>
                 <label for="textarea1">Recipe Description</label>
             </div>
-            
+
             <div class="input-field col s12">
                 <input id="author" name="author" type="text" required>
                 <label for="author">Author</label>
             </div>
 
-            <p class="prompt">Can't find an option to fit your recipe? add a new one below!</p>
+            <p class="prompt">Can't find an option to fit your recipe? add a new one at the bottom of the page</p>
 
             <div class="input-field col s4 offset-s1">
                 <select id="serves" name="serves" required>
@@ -46,7 +46,7 @@
                         {% for dur in cooking_duration %}
                             <option value="{{dur.cooking_duration}}">{{dur.cooking_duration}} mins</option>
                         {% endfor %}
-                s</select>
+                </select>
                 <label>Cooking duration</label>
             </div>
 

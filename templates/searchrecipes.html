@@ -1,19 +1,7 @@
 {% extends 'base.html'%} {% block content %}
 
-<div class="recipe-card-background-color">
+<div class=" row recipe-card-background-color">
 
-
-
-    <div class="row">
-        <div class="col s10 offset-s1">
-            
-            <!-- Add nav bar type thing to enable users to refine serach results -->
-            
-        </div>
-
-
-
-    </div>
 
     {% for recipe in recipes %}
 
@@ -93,86 +81,3 @@
 {% endblock %}
 
 
-<!-- Dropdown to show results 
-
-
-<li><a class='dropdown-button' href='#' data-activates='dropdown1'>Refine results</a>
-
-                <ul id='dropdown1' class='dropdown-content'>
-
-                    <li>
-                        <p disabled selected>Hover over to choose an option</p>
-                    </li>
-
-                    <li>
-                        <a class='dropdown-inner-button' href='#' data-activates='dropdown2'>Cooking Duration</a>
-
-                        <ul id='dropdown2' class='dropdown-content'>
-                            
-                            {% for dur in cooking_duration %}
-                            
-                            <li><a href="#!" value="{{dur.cooking_duration}}">{{dur.cooking_duration}} mins</a></li>
-                            
-                            {% endfor %}
-                        
-                        </ul>
-                    </li>
-                    
-                    <li>
-                        <a class='dropdown-inner-button' href='#' data-activates='dropdown3'>Meal Type</a>
-
-                        <ul id='dropdown3' class='dropdown-content'>
-                            
-                            {% for type in meal_type %}
-                            
-                            <li><a href="#!" value="{{type.meal_type}}">{{type.meal_type}}</a></li>
-                            
-                            {% endfor %}
-                        
-                        </ul>
-                    </li>
-                    
-                    <li>
-                        <a class='dropdown-inner-button' href='#' data-activates='dropdown4'>Cuisine Type</a>
-
-                        <ul id='dropdown4' class='dropdown-content'>
-                            
-                            {% for type in cuisine_type %}
-                            
-                            <li><a href="#!" value="{{type.cusine_type}}">{{type.cuisine_type}}</a></li>
-                            
-                            {% endfor %}
-                        
-                        </ul>
-                    </li>
-                    
-                    <li>
-                        <a class='dropdown-inner-button' href='#' data-activates='dropdown5'>Serving size</a>
-
-                        <ul id='dropdown5' class='dropdown-content'>
-                            
-                            {% for size in serves %}
-                            
-                            <li><a href="#!" value="{{size.serves}}">{{size.serves}} people</a></li>
-                            
-                            {% endfor %}
-                        
-                        </ul>
-                    </li>
-                    
-                    <li>
-                        <a class='dropdown-inner-button' href='#' data-activates='dropdown6'>Authors</a>
-
-                        <ul id='dropdown6' class='dropdown-content'>
-                            
-                            {% for author in authors %}
-                            
-                            <li><a href="#!" value="{{author.authors}}">{{author.authors}}</a></li>
-                            
-                            {% endfor %}
-                        
-                        </ul>
-                    </li>
-
-                </ul>
-            </li> -->

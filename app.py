@@ -20,6 +20,10 @@ app.secret_key = os.getenv("SECRET", "secret key")
 mongo = PyMongo(app)
 
 
+
+
+    
+
 @app.route('/')
 @app.route('/welcome')
 def welcome():
@@ -178,20 +182,28 @@ def insert_meal_type():
 
 @app.route('/delete_recipe/<recipe_id>', methods=['POST', 'GET'])
 def delete_recipe(recipe_id):
-    
+
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     
     return redirect(url_for('search_recipes'))    
 
 @app.route('/search_recipes')
 def search_recipes():
-    return render_template('searchrecipes.html', 
+    
+   
+    
+    
+    
+    
+    
+    
+    return render_template('searchrecipes.html',
         recipes=mongo.db.recipes.find(),
+        authors=mongo.db.authors.find(),
         serves=mongo.db.serves.find(),
         cooking_duration=mongo.db.cooking_duration.find(),
         meal_type=mongo.db.meal_type.find(),
-        cuisine_type=mongo.db.cuisine_type.find(),
-        authors=mongo.db.authors.find()
+        cuisine_type=mongo.db.cuisine_type.find()
         )
 
 @app.route('/edit_recipe/<recipe_id>')

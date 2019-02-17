@@ -53,11 +53,80 @@
 
         {% elif request.endpoint =='search_recipes' %}
 
-        <div class="parallax-container" style="height: 500px;">
-            <div class="parallax row"><img src="{{url_for('static', filename='images/search_recipe.png')}}">
+        <div class="parallax-container" style="height: 300px;">
+            <div class="parallax"><img src="{{url_for('static', filename='images/search_recipe.png')}}">
             </div>
-            
+
+            <div class="row">
+                <div style="background-color:grey" class="col s10 offset-s1">
+                    
+                    <form action="{{ url_for('search_recipes') }}" method="POST">
+                        
+                        <div class="input-field col s4 offset-s1">
+                            <select id="authors" name="authors" required>
+                            <option value="" disabled selected>Choose the author</option>
+                            {% for author in authors %}
+                            <option value="{{author.authors}}">{{author.authors}}</option>
+                            {% endfor %}
+                        </select>
+                            <label>Cuisine type</label>
+                        </div>
+
+                        <div class="input-field col s4 offset-s1">
+                            <select id="serves" name="serves" required>
+                                        <option value="" disabled selected>Choose the serving size</option>
+                                        {% for size in serves %}
+                                            <option value="{{size.serves}}">{{size.serves}} people</option>
+                                        {% endfor %}
+                                    </select>
+                            <label>Serving size</label>
+                        </div>
+
+
+
+                        <div class="input-field col s4">
+                            <select id="cooking_duration" name="cooking_duration" required>
+                                <option value="" disabled selected>Choose the cooking duration</option>
+                                {% for dur in cooking_duration %}
+                                <option value="{{dur.cooking_duration}}">{{dur.cooking_duration}} mins</option>
+                                {% endfor %}
+                            </select>
+                            <label>Cooking duration</label>
+                        </div>
+
+
+
+
+                        <div class="input-field col s4 offset-s1">
+                            <select id="cuisine_type" name="cuisine_type" required>
+                                <option value="" disabled selected>Choose the type of cuisine</option>
+                                {% for type in cuisine_type %}
+                                <option value="{{type.cuisine_type}}">{{type.cuisine_type}}</option>
+                                {% endfor %}
+                            </select>
+                            <label>Cuisine type</label>
+                        </div>
+
+
+
+                        <div class="input-field col s4">
+                            <select id="meal_type" name="meal_type" required>
+                                <option value="" disabled selected>Choose the type of meal</option>
+                                {% for meal in meal_type %}
+                                <option value="{{meal.meal_type}}">{{meal.meal_type}}</option>
+                                {% endfor %}
+                
+                            </select>
+                            <label>Meal type</label>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
         </div>
+
+
 
         {% elif request.endpoint =='edit_recipe' %}
 
@@ -132,6 +201,12 @@
         $('#modal4').modal();
         $('.parallax').parallax();
         $('.dropdown-inner-button').dropdown({ hover: true });
+        $(".dropdown-button").dropdown({ hover: true });
+        $(".dropdown-button-authors").dropdown();
+        $(".dropdown-button-cooking-durations").dropdown();
+        $(".dropdown-button-cuisine-types").dropdown();
+        $(".dropdown-button-meal-types").dropdown();
+        $(".dropdown-button-serves").dropdown();
 
     });
 </script>
