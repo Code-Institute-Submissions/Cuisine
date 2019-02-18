@@ -187,18 +187,66 @@ def delete_recipe(recipe_id):
     
     return redirect(url_for('search_recipes'))    
 
-@app.route('/search_recipes')
+@app.route('/search_recipes', methods=['POST', 'GET'])
 def search_recipes():
     
     
+    """function works! only need to add meesage for if no results are found, develop error message when user does not supply field, and add better styling"""
+    
+    
+    search_field = request.form.get('search_field')
+    search_value = request.form.get('search_value')
+    
+    
+    
+    
+    if request.method == "POST" and search_value == "":
+        
+        
+        
+        return render_template('searchrecipes.html',
+            recipes=mongo.db.recipes.find().sort(search_field, 1),
+            authors=mongo.db.authors.find(),
+            serves=mongo.db.serves.find(),
+            cooking_duration=mongo.db.cooking_duration.find(),
+            meal_type=mongo.db.meal_type.find(),
+            cuisine_type=mongo.db.cuisine_type.find()
+            )
+        
+    if request.method == "POST" and search_value != "" and not search_field:
+        
+        flash("you need to specify a search field as well as a search value for specific searches")
+            
+        return render_template('searchrecipes.html',
+            recipes=mongo.db.recipes.find(),
+            authors=mongo.db.authors.find(),
+            serves=mongo.db.serves.find(),
+            cooking_duration=mongo.db.cooking_duration.find(),
+            meal_type=mongo.db.meal_type.find(),
+            cuisine_type=mongo.db.cuisine_type.find()
+            )
+            
+    elif search_field:
+        
+        return render_template('searchrecipes.html',
+            recipes=mongo.db.recipes.find({search_field: search_value}),
+            authors=mongo.db.authors.find(),
+            serves=mongo.db.serves.find(),
+            cooking_duration=mongo.db.cooking_duration.find(),
+            meal_type=mongo.db.meal_type.find(),
+            cuisine_type=mongo.db.cuisine_type.find()
+            )
+    
+    
+    
     return render_template('searchrecipes.html',
-    recipes=mongo.db.recipes.find(),
-    authors=mongo.db.authors.find(),
-    serves=mongo.db.serves.find(),
-    cooking_duration=mongo.db.cooking_duration.find(),
-    meal_type=mongo.db.meal_type.find(),
-    cuisine_type=mongo.db.cuisine_type.find()
-    )
+                recipes=mongo.db.recipes.find(),
+                authors=mongo.db.authors.find(),
+                serves=mongo.db.serves.find(),
+                cooking_duration=mongo.db.cooking_duration.find(),
+                meal_type=mongo.db.meal_type.find(),
+                cuisine_type=mongo.db.cuisine_type.find()
+                )
 
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):

@@ -63,64 +63,34 @@
 
                     <form action="{{ url_for('search_recipes') }}" method="POST">
 
-                        <div class="input-field col s4">
-                            <select id="authors" name="authors">
-                                <option value="" disabled selected>Choose the author</option>
-                                {% for author in authors %}
-                                
-                                <option value="{{author.authors}}">{{author.authors}}</option>
-                                
-                                {% endfor %}
-                            </select>
-                            <label>Cuisine type</label>
-                        </div>
 
-                        <div class="input-field col s4">
-                            <select id="serves" name="serves">
-                                <option value="" disabled selected>Choose the serving size</option>
-                                {% for size in serves %}
-                                <option value="{{size.serves}}">{{size.serves}} people</option>
-                                {% endfor %}
-                            </select>
-                            <label>Serving size</label>
-                        </div>
+                        <div>
+                            <h5>Refine results by:
 
+                                <span>
+                                    <div class="input-field">
+                                        <select id="search_field" name="search_field">
+                                            <option value="" disabled selected>Choose the field</option>
+                                            <option value="author">Authors</option>
+                                            <option value="cooking_duration">Cooking duration</option>
+                                            <option value="cuisine_type">Cuisine type</option>
+                                            <option value="meal_type">Meal type</option>
+                                            <option value="serves">Serves</option>
+                                        </select>
+                                        <label>Search field</label>
+                                    </div>
+                                </span>
 
-
-                        <div class="input-field col s4">
-                            <select id="cooking_duration" name="cooking_duration">
-                                <option value="" disabled selected>Choose the cooking duration</option>
-                                {% for dur in cooking_duration %}
-                                <option value="{{dur.cooking_duration}}">{{dur.cooking_duration}} mins</option>
-                                {% endfor %}
-                            </select>
-                            <label>Cooking duration</label>
-                        </div>
-
-
-
-
-                        <div class="input-field col s4">
-                            <select id="cuisine_type" name="cuisine_type">
-                                <option value="" disabled selected>Choose the type of cuisine</option>
-                                {% for type in cuisine_type %}
-                                <option value="{{type.cuisine_type}}">{{type.cuisine_type}}</option>
-                                {% endfor %}
-                            </select>
-                            <label>Cuisine type</label>
-                        </div>
-
-
-
-                        <div class="input-field col s4">
-                            <select id="meal_type" name="meal_type">
-                                <option value="" disabled selected>Choose the type of meal</option>
-                                {% for meal in meal_type %}
-                                <option value="{{meal.meal_type}}">{{meal.meal_type}}</option>
-                                {% endfor %}
-                
-                            </select>
-                            <label>Meal type</label>
+                                <span>
+                                    <div class="input-field">
+                                        <input id="search_value" name="search_value" type="text">
+                                        <label for="recipe_name">Search value</label>
+                                    </div>
+                                </span>
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Search
+                                    <i class="material-icons right">add</i>
+                                </button>
+                            </h5>
                         </div>
                     </form>
                 </div>
@@ -215,3 +185,96 @@
 </script>
 
 </html>
+
+
+<!-- save for now
+
+<div class="input-field col s4">
+                                    <select id="search_field" name="search_field">
+                                        <option value="" disabled selected>Choose the field</option>
+                                        
+                                        {% for value in fields %}
+                                        
+                                        <option value="{{value.fields}}">{{value.fields}}</option>
+                                        
+                                        {% endfor %}   
+                                    
+                                    </select>
+                                    <label>Search field</label>
+                                </div>
+
+
+
+                            </h5>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="input-field col s4">
+                            <select id="authors" name="authors">
+                                <option value="" disabled selected>Choose the author</option>
+                                {% for a in authors %}
+                                
+                                <option value="{{a.authors}}">{{a.authors}}</option>
+                                
+                                {% endfor %}
+                            </select>
+                            <label>Cuisine type</label>
+                        </div>
+
+                        <div class="input-field col s4">
+                            <select id="serves" name="serves">
+                                <option value="" disabled selected>Choose the serving size</option>
+                                {% for size in serves %}
+                                <option value="{{size.serves}}">{{size.serves}} people</option>
+                                {% endfor %}
+                            </select>
+                            <label>Serving size</label>
+                        </div>
+
+
+
+                        <div class="input-field col s4">
+                            <select id="cooking_duration" name="cooking_duration">
+                                <option value="" disabled selected>Choose the cooking duration</option>
+                                {% for dur in cooking_duration %}
+                                <option value="{{dur.cooking_duration}}">{{dur.cooking_duration}} mins</option>
+                                {% endfor %}
+                            </select>
+                            <label>Cooking duration</label>
+                        </div>
+
+
+
+
+                        <div class="input-field col s4">
+                            <select id="cuisine_type" name="cuisine_type">
+                                <option value="" disabled selected>Choose the type of cuisine</option>
+                                {% for type in cuisine_type %}
+                                <option value="{{type.cuisine_type}}">{{type.cuisine_type}}</option>
+                                {% endfor %}
+                            </select>
+                            <label>Cuisine type</label>
+                        </div>
+
+
+
+                        <div class="input-field col s4">
+                            <select id="meal_type" name="meal_type">
+                                <option value="" disabled selected>Choose the type of meal</option>
+                                {% for meal in meal_type %}
+                                <option value="{{meal.meal_type}}">{{meal.meal_type}}</option>
+                                {% endfor %}
+                
+                            </select>
+                            <label>Meal type</label>
+                        </div> -->

@@ -162,6 +162,7 @@ nav {
 
 .recipe-title {
     padding: 15px 15px 10px 15px;
+    min-height: 68px;
 }
 
 .recipe-card {
