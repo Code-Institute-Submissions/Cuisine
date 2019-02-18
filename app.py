@@ -190,21 +190,15 @@ def delete_recipe(recipe_id):
 @app.route('/search_recipes')
 def search_recipes():
     
-   
-    
-    
-    
-    
-    
     
     return render_template('searchrecipes.html',
-        recipes=mongo.db.recipes.find(),
-        authors=mongo.db.authors.find(),
-        serves=mongo.db.serves.find(),
-        cooking_duration=mongo.db.cooking_duration.find(),
-        meal_type=mongo.db.meal_type.find(),
-        cuisine_type=mongo.db.cuisine_type.find()
-        )
+    recipes=mongo.db.recipes.find(),
+    authors=mongo.db.authors.find(),
+    serves=mongo.db.serves.find(),
+    cooking_duration=mongo.db.cooking_duration.find(),
+    meal_type=mongo.db.meal_type.find(),
+    cuisine_type=mongo.db.cuisine_type.find()
+    )
 
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
