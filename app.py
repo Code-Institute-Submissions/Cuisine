@@ -190,18 +190,13 @@ def delete_recipe(recipe_id):
 @app.route('/search_recipes', methods=['POST', 'GET'])
 def search_recipes():
     
-    
-
-    
-    
     search_field = request.form.get('search_field')
     search_value = request.form.get('search_values')
+    print(search_value)
     
-    
-    
-    
-    if request.method == "POST":
-       
+    if request.method == "POST" and search_value == None:
+        print(search_value)
+        
         
         return render_template('searchrecipes.html',
             recipes=mongo.db.recipes.find().sort(search_field, 1),
@@ -212,7 +207,8 @@ def search_recipes():
             cuisine_type=mongo.db.cuisine_type.find()
             )
         
-    if request.method == "POST" and search_value != "":
+    
+    elif request.method == "POST" and search_value != "":
         
         
         
@@ -225,10 +221,6 @@ def search_recipes():
             cuisine_type=mongo.db.cuisine_type.find()
             )
             
-    
-    
-    
-    
     return render_template('searchrecipes.html',
                 recipes=mongo.db.recipes.find(),
                 authors=mongo.db.author.find(),

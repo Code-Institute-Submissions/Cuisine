@@ -29,6 +29,11 @@ main {
     color: black;
 }
 
+.btn:focus {
+    background-color: white;
+    color: black;
+}
+
 /* Navbar */
 
 nav {
@@ -264,7 +269,14 @@ input[type=range]+.thumb {
     background-color: #e80c79;
 }
 
+/* search recipes */
 
+.search-bar {
+    
+    
+    background-color: #ada3a3;
+    margin: 21px;
+}
 
 
 
