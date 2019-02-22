@@ -5,34 +5,25 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 
-
-
-
-
-
-
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'recipesdb'
 app.config["MONGO_URI"] = 'mongodb://admin-1:family_recipes1@ds125125.mlab.com:25125/recipesdb'
 app.secret_key = os.getenv("SECRET", "secret key")
 
-
 mongo = PyMongo(app)
-
-
-
-
-    
 
 @app.route('/')
 @app.route('/welcome')
 def welcome():
+    """Renders the initial page users will encounter"""
     return render_template("index.html")
 
 
 
 @app.route('/recipe/<recipe_id>')
 def recipe(recipe_id):
+    """Displays a page with the full details of the recipe chosen on the 'searchrecipes.html' page"""
+    
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     
     return render_template("recipe.html", recipe=the_recipe)
@@ -41,8 +32,8 @@ def recipe(recipe_id):
 
 @app.route('/add_recipe')
 def add_recipe():
-    """ Shows the addrecipe.html template, and supplies it with the current values stored within each collection"""
-    """ Currently only the cuisine type and meal type collections returned sorted results"""
+    """Renders the form for the users to add a new recipe to the database"""
+    
     return render_template('addrecipe.html', 
     serves = mongo.db.serves.find(), 
     cooking_duration=mongo.db.cooking_duration.find(), 
@@ -54,7 +45,7 @@ def add_recipe():
 
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
-    
+    """Takes the user input from the form on 'addrecipe.html'. Also checks if the author is new, if so it is added to the database (collection = authors)"""
     recipes =  mongo.db.recipes
     authors = mongo.db.authors
     
@@ -80,6 +71,8 @@ def insert_recipe():
 
 @app.route('/insert_serves', methods=["POST"])
 def insert_serves():
+    """Checks if the user submitted a new serving size, if so it is inserted, if not a message is displayed to the user and they are redirected back to the previous page"""
+    
     serves_size = mongo.db.serves
     
     current_serves_size_list = []
@@ -103,6 +96,8 @@ def insert_serves():
 
 @app.route('/insert_cooking_duration', methods=["POST"])
 def insert_cooking_duration():
+    """Checks if the user submitted a new cooking duration, if so it is inserted, if not a message is displayed to the user and they are redirected back to the previous page"""
+    
     cooking_duration = mongo.db.cooking_duration
     
     current_cooking_duration_list = []
@@ -130,6 +125,8 @@ def insert_cooking_duration():
 
 @app.route('/insert_cuisine_type', methods=["POST"])
 def insert_cuisine_type():
+    """Checks if the user submitted a new cuisine type, if so it is inserted, if not a message is displayed to the user and they are redirected back to the previous page"""
+    
     cuisine_types = mongo.db.cuisine_type
     
     current_cuisine_types_list = []
@@ -157,6 +154,7 @@ def insert_cuisine_type():
 
 @app.route('/insert_meal_type', methods=["POST"])
 def insert_meal_type():
+    """Checks if the user submitted a new meal type, if so it is inserted, if not a message is displayed to the user and they are redirected back to the previous page"""
    
     meal_types = mongo.db.meal_type
     
@@ -182,6 +180,7 @@ def insert_meal_type():
 
 @app.route('/delete_recipe/<recipe_id>', methods=['POST', 'GET'])
 def delete_recipe(recipe_id):
+    """Deletes the chosen recipe from the database"""
 
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     
@@ -189,49 +188,76 @@ def delete_recipe(recipe_id):
 
 @app.route('/search_recipes', methods=['POST', 'GET'])
 def search_recipes():
+    """There are two types of searches""" 
+    """1: if the user only submits a search_field (category) all results are returned grouped by the search_field"""
+    """And the user can also choose to show the results high-low or low-high by using the switch"""
+    """2: if the user submits both a search_field (category) and a search_value only the recipes that match both criteria are returned"""
+    """The number of search results are also returned"""
     
     search_field = request.form.get('search_field')
     search_value = request.form.get('search_values')
-    print(search_value)
+    low_high = request.form.get('low_high')
+    recipes = mongo.db.recipes.find()
+    recipes_count = recipes.count()
+    
     
     if request.method == "POST" and search_value == None:
-        print(search_value)
         
+        if not low_high: 
         
-        return render_template('searchrecipes.html',
-            recipes=mongo.db.recipes.find().sort(search_field, 1),
-            authors=mongo.db.authors.find(),
-            serves=mongo.db.serves.find(),
-            cooking_duration=mongo.db.cooking_duration.find(),
-            meal_type=mongo.db.meal_type.find(),
-            cuisine_type=mongo.db.cuisine_type.find()
-            )
-        
-    
-    elif request.method == "POST" and search_value != "":
-        
-        
-        
-        return render_template('searchrecipes.html',
-            recipes=mongo.db.recipes.find({search_field: search_value}),
-            authors=mongo.db.authors.find(),
-            serves=mongo.db.serves.find(),
-            cooking_duration=mongo.db.cooking_duration.find(),
-            meal_type=mongo.db.meal_type.find(),
-            cuisine_type=mongo.db.cuisine_type.find()
-            )
-            
-    return render_template('searchrecipes.html',
-                recipes=mongo.db.recipes.find(),
-                authors=mongo.db.author.find(),
+            flash("The results are now sorted by {0} (low to high)".format(search_field))
+            return render_template('searchrecipes.html',
+                recipes=mongo.db.recipes.find().sort(search_field, 1),
+                authors=mongo.db.authors.find().sort('author',1),
                 serves=mongo.db.serves.find(),
                 cooking_duration=mongo.db.cooking_duration.find(),
                 meal_type=mongo.db.meal_type.find(),
                 cuisine_type=mongo.db.cuisine_type.find()
                 )
+        
+        elif low_high:
+            flash("The results are now sorted by {0} (high to low)".format(search_field))
+            return render_template('searchrecipes.html',
+                recipes=mongo.db.recipes.find().sort(search_field, -1),
+                authors=mongo.db.authors.find().sort('author',1),
+                serves=mongo.db.serves.find(),
+                cooking_duration=mongo.db.cooking_duration.find(),
+                meal_type=mongo.db.meal_type.find(),
+                cuisine_type=mongo.db.cuisine_type.find()
+                )
+            
+            
+        
+    
+    elif request.method == "POST" and search_value != "":
+        
+        results = mongo.db.recipes.find({search_field: search_value})
+        results_count = results.count()
+        flash("There are {0} recipe(s) that match your criteria out of {1}".format(results_count, recipes_count))
+        
+        return render_template('searchrecipes.html',
+            recipes=mongo.db.recipes.find({search_field: search_value}),
+            authors=mongo.db.authors.find().sort('author',1),
+            serves=mongo.db.serves.find(),
+            cooking_duration=mongo.db.cooking_duration.find(),
+            meal_type=mongo.db.meal_type.find(),
+            cuisine_type=mongo.db.cuisine_type.find()
+            )
+    
+    
+            
+    return render_template('searchrecipes.html',
+        recipes=mongo.db.recipes.find(),
+        authors=mongo.db.authors.find().sort('author',1),
+        serves=mongo.db.serves.find(),
+        cooking_duration=mongo.db.cooking_duration.find(),
+        meal_type=mongo.db.meal_type.find(),
+        cuisine_type=mongo.db.cuisine_type.find()
+        )
 
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
+    """Finds all the data for the chosen recipe for editing"""
 
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     
@@ -250,6 +276,8 @@ def edit_recipe(recipe_id):
 
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
+    """Updates the database's data concerning the chosen recipe, using the change(s) submitted by the user"""
+    
     recipes = mongo.db.recipes
     
     recipes.update( {'_id': ObjectId(recipe_id)},

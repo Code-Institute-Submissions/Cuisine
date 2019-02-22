@@ -1,7 +1,107 @@
 {% extends 'base.html'%} {% block content %}
+<div class="row search-row-color">
+    <div class="col s10 offset-s1 center search-bar">
 
-<div class=" row recipe-card-background-color">
-    <div class="row">
+        <form action="{{ url_for('search_recipes') }}" method="POST">
+            <h5>Refine the recipes below</h5>
+            <p class="center">Choose a category below and click search to sort results</p>
+
+            <div class="input-field">
+                <select id="search_field" name="search_field" required>
+                    <option value="" disabled selected>Choose a category to sort results</option>
+                    <option value="author">Authors</option>
+                    <option value="cooking_duration">Cooking duration</option>
+                    <option value="cuisine_type">Cuisine type</option>
+                    <option value="meal_type">Meal type</option>
+                    <option value="serves">Serves</option>
+                </select>
+                <label class="search-label">Order results by:</label>
+            </div>
+
+            <div id="hidden-until-clicked">
+
+
+
+                <div id="author-input-field" style="display:none;" class="input-field">
+                    <p class="center">Add another search choice to refine results to that choice</p>
+                    <select id="search_values" name="search_values">
+                        <option value="" disabled selected>Choose the author to refine results</option>
+                        {% for auth in authors %}
+                        <option value="{{auth.author}}">{{auth.author}}</option>
+                        
+                        
+                        {% endfor %}
+                        </select>
+                    <label>Authors</label>
+
+                </div>
+
+                <div id="cooking-duration-input-field" style="display:none;" class="input-field">
+                    <p class="center">Add another search choice to refine results to that choice</p>
+                    <select id="search_values" name="search_values">
+                        <option value="" disabled selected>Choose the cooking duration to refine results</option>
+                        {% for dur in cooking_duration %}
+                        <option value="{{dur.cooking_duration}}">{{dur.cooking_duration}} mins</option>
+                        {% endfor %}
+                    </select>
+                    <label>Cooking duration</label>
+                </div>
+
+                <div id="cuisine-type-input-field" style="display:none;" class="input-field">
+                    <p class="center">Add another search choice to refine results to that choice</p>
+                    <select id="search_values" name="search_values">
+                        <option value="" disabled selected>Choose the type of cuisine to refine results</option>
+                        {% for type in cuisine_type %}
+                        <option value="{{type.cuisine_type}}">{{type.cuisine_type}}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Cuisine type</label>
+                </div>
+
+                <div id="meal-type-input-field" style="display:none;" class="input-field">
+                    <p class="center">Add another search choice to refine results to that choice</p>
+                    <select id="search_values" name="search_values">
+                        <option value="" disabled selected>Choose the type of meal to refine results</option>
+                        {% for meal in meal_type %}
+                        <option value="{{meal.meal_type}}">{{meal.meal_type}}</option>
+                        {% endfor %}    
+                    </select>
+                    <label>Meal type</label>
+                </div>
+
+                <div id="serves-input-field" style="display:none;" class="input-field">
+                    <p class="center">Add another search choice to refine results to that choice</p>
+                    <select id="search_values" name="search_values">
+                        <option value="" disabled selected>Choose the serving size to refine results</option>
+                        {% for size in serves %}
+                        <option value="{{size.serves}}">{{size.serves}} people</option>
+                        {% endfor %}
+                    </select>
+                    <label>Serving size</label>
+                </div>
+
+
+            </div>
+            
+            <div class="switch">
+                <label>
+                    High-low
+                    <input id="low_high" name="low_high" type="checkbox">
+                    <span class="lever"></span>
+                    Low-high
+                </label>
+            </div>
+
+            <button class="btn waves-effect waves-light search-button" type="submit" name="action">Search
+                <i class="material-icons right">add</i>
+            </button>
+
+        </form>
+    </div>
+</div>
+
+<div class="row recipe-card-background-color">
+    <div class="col s12 offset-s1">
         {% with messages = get_flashed_messages() %} {% for message in messages %}
         <div id="flash-messages" class="col s6 offset-s2" role="alert">{{ message }}</div>
         {% endfor %} {% endwith %}
