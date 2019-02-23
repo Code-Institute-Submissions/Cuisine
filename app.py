@@ -205,8 +205,6 @@ def search_recipes():
     recipes = mongo.db.recipes.find()
     recipes_count = recipes.count()
     
-    flash("We currently have {} recipes".format(recipes_count))
-    
     if request.method == "POST" and search_value == None:
         
         if low_high: 
@@ -232,26 +230,37 @@ def search_recipes():
                 cuisine_type=mongo.db.cuisine_type.find()
                 )
             
-            
-        
-    
     elif request.method == "POST" and search_value != "":
         
         results = mongo.db.recipes.find({search_field: search_value})
         results_count = results.count()
-        flash("There are {0} recipe(s) that match your criteria out of all recipes: {1}".format(results_count, recipes_count))
         
-        return render_template('searchrecipes.html',
-            recipes=mongo.db.recipes.find({search_field: search_value}),
-            authors=mongo.db.authors.find().sort('author',1),
-            serves=mongo.db.serves.find(),
-            cooking_duration=mongo.db.cooking_duration.find(),
-            meal_type=mongo.db.meal_type.find(),
-            cuisine_type=mongo.db.cuisine_type.find()
-            )
-    
-    
+        if results_count > 0:
             
+            flash("There are {0} recipe(s) that match your criteria out of all recipes: {1}".format(results_count, recipes_count))
+            return render_template('searchrecipes.html',
+                recipes=mongo.db.recipes.find({search_field: search_value}),
+                authors=mongo.db.authors.find().sort('author',1),
+                serves=mongo.db.serves.find(),
+                cooking_duration=mongo.db.cooking_duration.find(),
+                meal_type=mongo.db.meal_type.find(),
+                cuisine_type=mongo.db.cuisine_type.find()
+                )
+        
+        else:
+            flash("No recipes were found")
+            return render_template('searchrecipes.html',
+                recipes=mongo.db.recipes.find(),
+                authors=mongo.db.authors.find().sort('author',1),
+                serves=mongo.db.serves.find(),
+                cooking_duration=mongo.db.cooking_duration.find(),
+                meal_type=mongo.db.meal_type.find(),
+                cuisine_type=mongo.db.cuisine_type.find()
+                )
+            
+            
+    
+    flash("We currently have {} recipes".format(recipes_count))       
     return render_template('searchrecipes.html',
         recipes=mongo.db.recipes.find(),
         authors=mongo.db.authors.find().sort('author',1),
