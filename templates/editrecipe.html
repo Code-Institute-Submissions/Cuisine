@@ -1,9 +1,9 @@
+<!--Template handles the editing of recipes. 
+Users cannot edit categories as not to cause errors in the database -->
+
 {% extends 'base.html'%} {% block content %}
-<!-- CURRENTLY SAME AS ADD_RECIPE YOU WILL NEED TO ADAPT IT-->
 <div class="row">
-
     <h2 class="col s10 offset-s1">Edit a recipe</h2>
-
 
     <form class="col s10 offset-s1 add-recipe" action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST">
         <div class="row">
@@ -39,8 +39,6 @@
                 <label>Serving size</label>
             </div>
 
-
-
             <div class="input-field col s4">
                 <select id="cooking_duration" name="cooking_duration" required>
                     <option value="" disabled selected>Choose the cooking duration</option>
@@ -56,9 +54,6 @@
                 <label>Cooking duration</label>
             </div>
 
-
-
-
             <div class="input-field col s4 offset-s1">
                 <select id="cuisine_type" name="cuisine_type" required>
                 <option value="" disabled selected>Choose the type of cuisine</option>
@@ -72,8 +67,6 @@
             </select>
                 <label>Cuisine type</label>
             </div>
-
-
 
             <div class="input-field col s4">
                 <select id="meal_type" name="meal_type" required>
@@ -111,14 +104,11 @@
 
     <h4 class="add-category-title">Need a new category? add them here</h4>
 
-
     <form class="col s3" action="{{ url_for('insert_serves') }}" method="POST">
         <p>Click below to add a new serving size</p>
         <a class="waves-effect waves-light btn modal-trigger modal-button-styling category-input" href="#modal1">Add
         <i class="material-icons right">add</i>
         </a>
-
-
 
         <div id="modal1" class="modal">
             <div class="modal-content input-field">
@@ -129,7 +119,6 @@
                     <input type="range" id="serves" name="serves" min="8" max="50" step="1" />
                 </p>
 
-
                 <div class="modal-footer">
                     <button class="btn waves-effect waves-light" type="submit" name="action">Add serving size
                     <i class="material-icons right">add</i>
@@ -139,7 +128,6 @@
             </div>
 
         </div>
-
     </form>
 
     <form class="col s3" action="{{ url_for('insert_cooking_duration') }}" method="POST">
@@ -147,7 +135,6 @@
         <a class="waves-effect waves-light btn modal-trigger modal-button-styling category-input" href="#modal2">Add
         <i class="material-icons right">add</i>
         </a>
-
 
         <div id="modal2" class="modal">
             <div class="modal-content input-field">
@@ -173,15 +160,13 @@
         <i class="material-icons right">add</i>
         </a>
 
-
         <div id="modal3" class="modal">
             <div class="modal-content input-field">
                 <h4>Add a new cuisine type</h4>
                 <p>Add a new cuisine type in the box below.</p>
                 <input id="cuisine_type" name="cuisine_type" type="text">
-
-
             </div>
+
             <div class="modal-footer">
                 <button class="btn waves-effect waves-light" type="submit" name="action">Add cuisine type
                 <i class="material-icons right">add</i>
@@ -196,7 +181,6 @@
         <i class="material-icons right">add</i>
         </a>
 
-
         <div id="modal4" class="modal">
             <div class="modal-content input-field">
                 <h4>Add a new meal type</h4>
@@ -210,6 +194,5 @@
             </div>
         </div>
     </form>
-
 </div>
 {% endblock %}

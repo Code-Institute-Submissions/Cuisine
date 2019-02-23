@@ -4,10 +4,6 @@ footer {
     padding-left: 300px;
 }
 
-
-
-
-
 body {
     font-family: 'Montserrat', sans-serif;
     display: flex;
@@ -277,8 +273,6 @@ textarea:focus+label {
     color: #e80c79 !important;
 }
 
-
-
 .input-field input:focus,
 textarea:focus {
     border-bottom: 1px solid #e80c79 !important;
@@ -297,13 +291,6 @@ input[type="range"]::-webkit-slider-thumb {
 input[type=range]+.thumb {
     background-color: #e80c79;
 }
-
-
-
-
-
-
-
 
 /* footer */
 
@@ -343,15 +330,12 @@ input[type=range]+.thumb {
     footer {
         padding-left: 0;
     }
-    
-    
 }
 
 @media (min-width: 500px) and (max-width: 600px) {
     .limit-width {
         max-width: 50%;
     }
-    
 }
 
 @media only screen and (min-width: 1232px) {
@@ -359,6 +343,4 @@ input[type=range]+.thumb {
         min-width: 31%;
         max-width: 0%;
     }
-
-
 }

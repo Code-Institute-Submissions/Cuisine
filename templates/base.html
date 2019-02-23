@@ -1,3 +1,6 @@
+<!--Base template from which all extend.
+Also contains the navigation bar and footer-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,17 +18,15 @@
 <header>
     <nav>
         <ul id="slide-out" class="side-nav fixed">
-            <a href="{{url_for('welcome')}}"><img class="logo-image" src="{{url_for('static', filename='images/logo.png')}}"></a>
+            <a href="{{url_for('welcome')}}"><img class="logo-image" src="{{url_for('static', filename='images/logo.png')}}" alt="Cuisine logo image"></a>
             <li><a href="{{url_for('welcome')}}">Home</a></li>
             <li><a href="{{url_for('search_recipes')}}">Search recipes</a></li>
             <li><a href="{{url_for('add_recipe')}}">Add a recipe</a></li>
-
-
         </ul>
         <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
         <span id="logo-image-smaller">
-            <img class="smaller-logo" src="{{url_for('static', filename='images/1-smaller-logo.png')}}">
-            <img class="smaller-logo" src="{{url_for('static', filename='images/2-smaller-logo.png')}}">
+            <img class="smaller-logo" src="{{url_for('static', filename='images/1-smaller-logo.png')}}" alt="Cuisine logo smaller image logo">
+            <img class="smaller-logo" src="{{url_for('static', filename='images/2-smaller-logo.png')}}" alt="Cuisine logo smaller image cuisine">
         </span>
     </nav>
 </header>
@@ -36,36 +37,31 @@
         {% if request.endpoint == 'welcome' %}
 
         <div class="parallax-container">
-            <div class="parallax"><img src="{{url_for('static', filename='images/index.png')}}"></div>
+            <div class="parallax"><img src="{{url_for('static', filename='images/index.png')}}" alt="Cooking background image"></div>
         </div>
 
         {% elif request.endpoint =='recipe' %}
 
         <div class="parallax-container">
-            <div class="parallax"><img src="{{url_for('static', filename='images/recipe.png')}}"></div>
+            <div class="parallax"><img src="{{url_for('static', filename='images/recipe.png')}}" alt="Cooking background image"></div>
         </div>
 
         {% elif request.endpoint =='add_recipe' %}
 
         <div class="parallax-container">
-            <div class="parallax"><img src="{{url_for('static', filename='images/add_recipe.png')}}"></div>
+            <div class="parallax"><img src="{{url_for('static', filename='images/add_recipe.png')}}" alt="Cooking background image"></div>
         </div>
 
         {% elif request.endpoint =='search_recipes' %}
 
         <div class="parallax-container" style="height: 100px;">
-            <div class="parallax"><img src="{{url_for('static', filename='images/search_recipe.png')}}">
-
-            </div>
-
+            <div class="parallax"><img src="{{url_for('static', filename='images/search_recipe.png')}}" alt="Cooking background image"></div>
         </div>
-
-
 
         {% elif request.endpoint =='edit_recipe' %}
 
         <div class="parallax-container">
-            <div class="parallax"><img src="{{url_for('static', filename='images/edit_recipe.png')}}"></div>
+            <div class="parallax"><img src="{{url_for('static', filename='images/edit_recipe.png')}}" alt="Cooking background image"></div>
         </div>
 
         {% else %} {% endif %}
@@ -77,36 +73,31 @@
         {% if request.endpoint == 'welcome' %}
 
         <div class="parallax-container">
-            <div class="parallax"><img src="{{url_for('static', filename='images/index.png')}}"></div>
+            <div class="parallax"><img src="{{url_for('static', filename='images/index.png')}}" alt="Cooking background image"></div>
         </div>
 
         {% elif request.endpoint =='recipe' %}
 
         <div class="parallax-container">
-            <div class="parallax"><img src="{{url_for('static', filename='images/recipe.png')}}"></div>
+            <div class="parallax"><img src="{{url_for('static', filename='images/recipe.png')}}" alt="Cooking background image"></div>
         </div>
 
         {% elif request.endpoint =='add_recipe' %}
 
         <div class="parallax-container">
-            <div class="parallax"><img src="{{url_for('static', filename='images/add_recipe.png')}}"></div>
+            <div class="parallax"><img src="{{url_for('static', filename='images/add_recipe.png')}}" alt="Cooking background image"></div>
         </div>
 
         {% elif request.endpoint =='search_recipes' %}
 
         <div class="parallax-container">
-            <div class="parallax">
-                <img src="{{url_for('static', filename='images/search_recipe.png')}}">
-
-
-
-            </div>
+            <div class="parallax"><img src="{{url_for('static', filename='images/search_recipe.png')}}" alt="Cooking background image"></div>
         </div>
 
         {% elif request.endpoint =='edit_recipe' %}
 
         <div class="parallax-container">
-            <div class="parallax"><img src="{{url_for('static', filename='images/edit_recipe.png')}}"></div>
+            <div class="parallax"><img src="{{url_for('static', filename='images/edit_recipe.png')}}" alt="Cooking background image"></div>
         </div>
 
         {% else %} {% endif %}
@@ -125,50 +116,7 @@
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $(".button-collapse").sideNav();
-        $('select').material_select();
-        $('#modal1').modal();
-        $('#modal2').modal();
-        $('#modal3').modal();
-        $('#modal4').modal();
-        $('.parallax').parallax();
-        $('.dropdown-inner-button').dropdown({ hover: true });
-        $(".dropdown-button").dropdown({ hover: true });
-        $(".dropdown-button-authors").dropdown();
-        $(".dropdown-button-cooking-durations").dropdown();
-        $(".dropdown-button-cuisine-types").dropdown();
-        $(".dropdown-button-meal-types").dropdown();
-        $(".dropdown-button-serves").dropdown();
-        $(function() {
-            $("#search_field").change(function() {
-                var val = $(this).val();
-                $("#hidden-until-clicked").children().hide()
-
-                if (val === "author") {
-                    $("#author-input-field").toggle();
-
-                }
-                else if (val === "cooking_duration") {
-                    $("#cooking-duration-input-field").toggle();
-
-                }
-                else if (val === "cuisine_type") {
-                    $("#cuisine-type-input-field").toggle();
-
-                }
-                else if (val === "meal_type") {
-                    $("#meal-type-input-field").toggle();
-
-                }
-                else if (val === "serves") {
-                    $("#serves-input-field").toggle();
-
-                }
-            });
-        });
-    });
-</script>
+<script type="text/javascript" src="{{url_for('static', filename='js/materialize.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/search_bar.js')}}"></script>
 
 </html>

@@ -1,10 +1,9 @@
-{% extends 'base.html'%} {% block content %}
+<!--Templates handles the intial page users encounter upon visiting the site -->
 
+{% extends 'base.html'%} {% block content %}
 <div class="row light-pink">
     <div class="col s8 offset-s2 welcome-message-box">
-
         <div class="welcome-message">
-
             <h2>Welcome to Cuisine!</h2>
             <h4>for sharing recipes online</h4>
             <div class="welcome-links">
@@ -17,19 +16,6 @@
                 <a class="waves-effect waves-light btn" href="{{url_for('add_recipe')}}">Add</a>
             </div>
         </div>
-
-
-
-
     </div>
 </div>
-
-
-
-
-
-
-
-
-
 {% endblock %}

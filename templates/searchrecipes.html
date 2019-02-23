@@ -1,5 +1,10 @@
+<!--Template handles allowing users to search through all the recipes currently contained in the database, 
+and view either a sorted view of all the recipes based on user input.
+Or a refined view of only the results that contain the submited search value-->
+
 {% extends 'base.html'%} {% block content %}
 <div class="row search-row-color">
+
     <div class="col s10 offset-s1 center search-bar">
 
         <form action="{{ url_for('search_recipes') }}" method="POST">
@@ -20,16 +25,12 @@
 
             <div id="hidden-until-clicked">
 
-
-
                 <div id="author-input-field" style="display:none;" class="input-field">
                     <p class="center">Add another search choice to refine results to that choice</p>
                     <select id="search_values" name="search_values">
                         <option value="" disabled selected>Choose the author to refine results</option>
                         {% for auth in authors %}
                         <option value="{{auth.author}}">{{auth.author}}</option>
-                        
-                        
                         {% endfor %}
                         </select>
                     <label>Authors</label>
@@ -80,9 +81,8 @@
                     <label>Serving size</label>
                 </div>
 
-
             </div>
-            
+
             <div class="switch">
                 <label>
                     High-low
@@ -103,13 +103,11 @@
 <div class="row recipe-card-background-color">
     <div class="col s12 offset-s1">
         {% with messages = get_flashed_messages() %} {% for message in messages %}
-        <div id="flash-messages" class="col s6 offset-s2" role="alert">{{ message }}</div>
+        <div id="flash-messages" class="col s6 offset-s2 z-depth-4" role="alert">{{ message }}</div>
         {% endfor %} {% endwith %}
     </div>
 
-
     {% for recipe in recipes %}
-
 
     <div class="col s10 m5 l5 limit-width">
         <div class="recipe-card">
@@ -182,5 +180,5 @@
     </div>
     {% endfor %}
 </div>
-</div>
+
 {% endblock %}

@@ -1,35 +1,27 @@
+<!--Template handles viewing all the details of the recipe 
+(i.e: all the contents of the recipe document in the database)-->
+
 {% extends 'base.html'%} {% block content %}
-
-
-
 <div class="row recipe-container">
 
     <div class="col s12 m8 offset-m1 l8 offset-l1" id="recipe-card-full">
-
         <div class="row">
             <div class="recipe-info ">
                 <h3 name="recipe_name " id="recipe_name ">{{ recipe.recipe_name.capitalize() }}</h3>
             </div>
         </div>
 
-
-
         <div class="row">
-
             <p> {{ recipe.recipe_description }}</p>
-
         </div>
 
         <div class="row ">
             <div class=" col s6 recipe-ingredients ">
                 <p name="recipe_name " id="recipe_name ">
                     {%for ingredient in recipe.ingredients.split(", ") %}
-
                     <li>{{ ingredient }}</li>
-
                     {% endfor %}
                 </p>
-
             </div>
 
             <div class="col s6 recipe-category-info">
@@ -47,7 +39,9 @@
                     <div class="col s12">
                         <p><i class="material-icons category-icon tooltipped" data-position="top" data-delay="30" data-tooltip="The amount of people this recipe will serve">person</i>: {{ recipe.serves }}</p>
                     </div>
+
                 </div>
+
             </div>
 
         </div>
@@ -56,9 +50,7 @@
             <div class="recipe-instructions">
                 <p name="recipe_name " id="recipe_name ">
                     {%for item in recipe.recipe_instructions.split(". ") %}
-
                     <li>{{ loop.index }}. {{ item }}</li>
-
                     {% endfor %}
                 </p>
             </div>
@@ -88,6 +80,4 @@
         </div>
     </div>
 </div>
-
-
 {% endblock %}

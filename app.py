@@ -45,7 +45,8 @@ def add_recipe():
 
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
-    """Takes the user input from the form on 'addrecipe.html'. Also checks if the author is new, if so it is added to the database (collection = authors)"""
+    """Takes the user input from the form on 'addrecipe.html'. 
+    Also checks if the author is new, if so it is added to the database (collection = authors)"""
     recipes =  mongo.db.recipes
     authors = mongo.db.authors
     
@@ -71,7 +72,8 @@ def insert_recipe():
 
 @app.route('/insert_serves', methods=["POST"])
 def insert_serves():
-    """Checks if the user submitted a new serving size, if so it is inserted, if not a message is displayed to the user and they are redirected back to the previous page"""
+    """Checks if the user submitted a new serving size, if so it is inserted, if 
+    not a message is displayed to the user and they are redirected back to the previous page"""
     
     serves_size = mongo.db.serves
     
@@ -96,7 +98,8 @@ def insert_serves():
 
 @app.route('/insert_cooking_duration', methods=["POST"])
 def insert_cooking_duration():
-    """Checks if the user submitted a new cooking duration, if so it is inserted, if not a message is displayed to the user and they are redirected back to the previous page"""
+    """Checks if the user submitted a new cooking duration, if so it is inserted, 
+    if not a message is displayed to the user and they are redirected back to the previous page"""
     
     cooking_duration = mongo.db.cooking_duration
     
@@ -125,7 +128,8 @@ def insert_cooking_duration():
 
 @app.route('/insert_cuisine_type', methods=["POST"])
 def insert_cuisine_type():
-    """Checks if the user submitted a new cuisine type, if so it is inserted, if not a message is displayed to the user and they are redirected back to the previous page"""
+    """Checks if the user submitted a new cuisine type, if so it is inserted,
+    if not a message is displayed to the user and they are redirected back to the previous page"""
     
     cuisine_types = mongo.db.cuisine_type
     
@@ -154,7 +158,8 @@ def insert_cuisine_type():
 
 @app.route('/insert_meal_type', methods=["POST"])
 def insert_meal_type():
-    """Checks if the user submitted a new meal type, if so it is inserted, if not a message is displayed to the user and they are redirected back to the previous page"""
+    """Checks if the user submitted a new meal type, if so it is inserted, 
+    if not a message is displayed to the user and they are redirected back to the previous page"""
    
     meal_types = mongo.db.meal_type
     
@@ -188,11 +193,11 @@ def delete_recipe(recipe_id):
 
 @app.route('/search_recipes', methods=['POST', 'GET'])
 def search_recipes():
-    """There are two types of searches""" 
-    """1: if the user only submits a search_field (category) all results are returned grouped by the search_field"""
-    """And the user can also choose to show the results high-low or low-high by using the switch"""
-    """2: if the user submits both a search_field (category) and a search_value only the recipes that match both criteria are returned"""
-    """The number of search results are also returned"""
+    """There are two types of searches 
+    1: if the user only submits a search_field (category) all results are returned grouped by the search_field
+    And the user can also choose to show the results high-low or low-high by using the switch
+    2: if the user submits both a search_field (category) and a search_value only the recipes that match both criteria are returned
+    The number of search results and total number of recipes in the database are also returned"""
     
     search_field = request.form.get('search_field')
     search_value = request.form.get('search_values')
@@ -200,12 +205,13 @@ def search_recipes():
     recipes = mongo.db.recipes.find()
     recipes_count = recipes.count()
     
+    flash("We currently have {} recipes".format(recipes_count))
     
     if request.method == "POST" and search_value == None:
         
-        if not low_high: 
+        if low_high: 
         
-            flash("The results are now sorted by {0} (low to high)".format(search_field))
+            flash("All recipes are now sorted by {0} (low to high)".format(search_field))
             return render_template('searchrecipes.html',
                 recipes=mongo.db.recipes.find().sort(search_field, 1),
                 authors=mongo.db.authors.find().sort('author',1),
@@ -215,8 +221,8 @@ def search_recipes():
                 cuisine_type=mongo.db.cuisine_type.find()
                 )
         
-        elif low_high:
-            flash("The results are now sorted by {0} (high to low)".format(search_field))
+        elif not low_high:
+            flash("All recipes are now sorted by {0} (high to low)".format(search_field))
             return render_template('searchrecipes.html',
                 recipes=mongo.db.recipes.find().sort(search_field, -1),
                 authors=mongo.db.authors.find().sort('author',1),
@@ -233,7 +239,7 @@ def search_recipes():
         
         results = mongo.db.recipes.find({search_field: search_value})
         results_count = results.count()
-        flash("There are {0} recipe(s) that match your criteria out of {1}".format(results_count, recipes_count))
+        flash("There are {0} recipe(s) that match your criteria out of all recipes: {1}".format(results_count, recipes_count))
         
         return render_template('searchrecipes.html',
             recipes=mongo.db.recipes.find({search_field: search_value}),
