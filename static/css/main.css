@@ -30,6 +30,9 @@ main {
     color: black;
 }
 
+strong {
+    font-weight: 900;
+}
 /* Navbar */
 
 nav {
@@ -314,6 +317,12 @@ input[type=range]+.thumb {
 }
 
 /* Media queries */
+
+@media only screen and (max-width: 302px) {
+    .xxs-screen-disappear  {
+       display: none;
+    }
+}
 
 @media only screen and (min-width: 992px) {
     #logo-image-smaller {

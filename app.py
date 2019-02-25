@@ -237,7 +237,7 @@ def search_recipes():
         
         if results_count > 0:
             
-            flash("There are {0} recipe(s) that match your criteria out of all recipes: {1}".format(results_count, recipes_count))
+            flash("There are {0} recipe(s) for: {1} of {2}".format(results_count, search_field, search_value).replace("_", " "))
             return render_template('searchrecipes.html',
                 recipes=mongo.db.recipes.find({search_field: search_value}),
                 authors=mongo.db.authors.find().sort('author',1),
