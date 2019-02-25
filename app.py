@@ -220,7 +220,7 @@ def search_recipes():
                 )
         
         elif not low_high:
-            flash("All recipes are now sorted by {0} (high to low)".format(search_field))
+            flash("All recipes ({0}) are now sorted by {1} (high to low)".format(recipes_count, search_field))
             return render_template('searchrecipes.html',
                 recipes=mongo.db.recipes.find().sort(search_field, -1),
                 authors=mongo.db.authors.find().sort('author',1),
