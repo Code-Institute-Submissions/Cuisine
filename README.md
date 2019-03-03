@@ -2,7 +2,18 @@
 
 Cusine is an online recipe book, where users can add, edit and delete the recipes on the site. Users can also search through the recipes, and see either a sorted or a refined view of the results. This project is the 4th requirement of the Code Institute's full stack web development course. The project showcases skills in: Python3, Flask and MongoDB.
 
-## UX
+
+Index:
+-[User experience](#credits)
+-[Features]()
+-[Technologies Used]
+-[Testing]
+-[Deployment]
+-[Credits]
+
+
+
+## User experience 
 
 Users wanted a way to be able to find new recipes written by real people, and also to easily share their own recipes. 
 
@@ -88,23 +99,31 @@ If this section grows too long, you may want to split it off into a separate fil
 
 ## Deployment
 
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
+The project is deployed on Heroku, and can be accessed [here](https://recipe-app-python.herokuapp.com)  
 
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
+Deployment to Heroku required 3 things:
 
-Different values for environment variables (Heroku Config Vars)?
-Different configuration files?
-Separate git branch?
-In addition, if it is not obvious, you should also describe how to run your code locally.
+**1-** Creation of "requirements.txt" file, which displays the additional libraries and requirements to run the project.
+
+ Use the command below (in the command line) to install requirements:
+ ~~~
+ pip3 install -r requirements.txt
+ ~~~
+
+**2-** Creation of a "Procfile", which tells Heroku how to run our app
+
+**3-** Setting environment variables on Heroku. 
+Within our flask main code (i.e: app.py) we set the variables for IP, PORT and the SECRET_KEY to environment variables, which are retrieved from Heroku.
+
+
+
+There are no differences between the deployed and development version of the app. However, for purposes of securing the app, the following variables were set as environmental variables: IP, PORT and the SECRET_KEY. Each of these were set and are retireved from Heroku.
+
 
 ## Credits
 
-Content
+#### Content
 
-The text for section Y was copied from the Wikipedia article Z
-Media
+The photos used in this site were obtained from [unsplash.com](https://unsplash.com)
 
-The photos used in this site were obtained from ...
-Acknowledgements
 
-I received inspiration for this project from X
