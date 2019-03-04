@@ -1,7 +1,5 @@
 //Javascript code required to initialize javascript components from Materialize 0.100.2
 
-
-
 $(document).ready(function() {
     $(".button-collapse").sideNav();
     $('select').material_select();

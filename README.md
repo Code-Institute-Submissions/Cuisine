@@ -1,15 +1,17 @@
 # Cuisine
 
+See the app [here](https://recipe-app-python.herokuapp.com)
+
 Cusine is an online recipe book, where users can add, edit and delete the recipes on the site. Users can also search through the recipes, and see either a sorted or a refined view of the results. This project is the 4th requirement of the Code Institute's full stack web development course. The project showcases skills in: Python3, Flask and MongoDB.
 
 
-Index:
--[User experience](#user)
--[Features](#features)
--[Technologies Used](#technologies)
--[Testing](#testing)
--[Deployment](#deployment)
--[Credits](#credits)
+**Index:**
+- [User experience](#user)
+- [Features](#features)
+- [Technologies Used](#technologies)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Credits](#credits)
 
 
 
@@ -70,21 +72,48 @@ The main features of the app concerns the manipulation of the recipes, and can b
    * Users cannot delete category types because it may negatively impact the database, and the app.
    * Category types and authors are kept in the database even if no recipes currently use these values because they may be needed in the future, and thus will be ready for users.  
 
+Please note that only the Gihub logo in the footer works (will take user to the Github page). The Facebook and Twitter logos currently do not go anywhere.
 #### Features left to implement
 
-The following features were not added for 3 reasons: time constraints, they weren't a requirement for the project and/or I do not cuurently have the knowledge to implement the feature.
+The following features were not added for 3 reasons: time constraints, they weren't a requirement for the project and/or I do not curently have the knowledge to implement the feature effectively.
 
 1. Allowing users to store images in the MongoDB database, or in another easily scallable method.
-2. Providing the ability for users to create user profiles, for grouping their favourite recipes. And possibly refining editing and deletion of recipes to the author and admin alone.
+2. Providing the ability for users to create user profiles, for grouping their favourite recipes. 
 
 
 ## Technologies Used
 
+Flask (1.0.2):
+* Acts as a framework for the app
 
-In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
+MongoDB with mlab:
+* MongoDB provides the non-relational databse, whilst mlab hosts our database (allowing users access)
 
-JQuery
-The project uses JQuery to simplify DOM manipulation.
+Awesome Fonts & Material icons:
+* Provide the icons for the project (awesome fonts was used as well as Material icon to provide the icons for the links to: Github, Facebook and Twitter)
+
+Google Fonts:
+* Fonts "Montserrat" and "Libre Baskerville" used 
+
+Materialize (0.100.2):
+* Provides a grid system to structure html code, basic css styling and also javascript components for the app
+* Used Materialize components are:
+  * Side navigation bar (hiding on smaller screens and displaying a hamburger icon)
+  * Modal pop ups for adding categories (add and edit recipes.html)
+  * Parallax images on all pages
+  * Dropdown menus
+
+Jquery (3.2.1):
+* Used to simplify DOM manipulation, which assists the use of Materialize components.
+* Also used for ["search_bar.js"](https://github.com/brookk16/Cuisine/blob/master/static/js/search_bar.js), which renders the search values for the chosen search category, when a category is chosen (allowing users to refine search results)
+
+Python3 (3.4.3):
+* Used to write the logic for this app (which can be seen in [app.py](https://github.com/brookk16/Cuisine/blob/master/app.py))
+
+Pymongo (3.7.2):
+* Python-Flask tools for connecting to and manipulating the MongoDB database
+
+For the additional tools and libraries needed to run the app, please refer to [requirements.txt](https://github.com/brookk16/Cuisine/blob/master/requirements.txt)
 
 ## Testing
 
@@ -107,7 +136,9 @@ If this section grows too long, you may want to split it off into a separate fil
 
 ## Deployment
 
-The project is deployed on Heroku, and can be accessed [here](https://recipe-app-python.herokuapp.com)  
+The project is deployed on Heroku, and can be accessed [here](https://recipe-app-python.herokuapp.com) 
+
+The Github for this project can be found [here](https://github.com/brookk16/Cuisine). And can also be accessed via the github logo in the footer.
 
 Deployment to Heroku required 3 things:
 
@@ -123,8 +154,6 @@ Deployment to Heroku required 3 things:
 **3-** Setting environment variables on Heroku. 
 Within our flask main code (i.e: app.py) we set the variables for IP, PORT and the SECRET_KEY to environment variables, which are retrieved from Heroku.
 
-
-
 There are no differences between the deployed and development version of the app. However, for purposes of securing the app, the following variables were set as environmental variables: IP, PORT and the SECRET_KEY. Each of these were set and are retireved from Heroku.
 
 
@@ -132,6 +161,10 @@ There are no differences between the deployed and development version of the app
 
 #### Content
 
-The photos used in this site were obtained from [unsplash.com](https://unsplash.com)
+All the images used in the parallax for this site were obtained from [unsplash.com](https://unsplash.com)
 
+The logo was created using [hatchful](https://hatchful.shopify.com)
 
+#### Acknowledgements
+
+Inspiration for this project came from [momofuku.com](https://momofuku.com)
