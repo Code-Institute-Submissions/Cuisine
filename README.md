@@ -4,18 +4,18 @@ Cusine is an online recipe book, where users can add, edit and delete the recipe
 
 
 Index:
--[User experience](#credits)
--[Features]()
--[Technologies Used]
--[Testing]
--[Deployment]
--[Credits]
+-[User experience](#user)
+-[Features](#features)
+-[Technologies Used](#technologies)
+-[Testing](#testing)
+-[Deployment](#deployment)
+-[Credits](#credits)
 
 
 
 ## User experience 
 
-Users wanted a way to be able to find new recipes written by real people, and also to easily share their own recipes. 
+Users wanted a way to be easily able to find new recipes, written by people of all skills and abilities, and also to easily share their own recipes. 
 
 For example, please read the user stories below (from which we based our design decisions):
 
@@ -28,6 +28,8 @@ For example, please read the user stories below (from which we based our design 
 Therefore we concluded that users wanted a simple way to store recipes, in an easily accesible, readable and shareable way. They would therefore also need a method to edit the stored recipes, and also delete them should they wish.
 
 Please look below at the wireframes for the original concept:
+
+![index page]()
 
 
 
