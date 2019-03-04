@@ -29,7 +29,13 @@ Therefore we concluded that users wanted a simple way to store recipes, in an ea
 
 Please look below at the wireframes for the original concept:
 
-![index page]()
+![index/welcome page](https://github.com/brookk16/Cuisine/blob/master/course%20files/index.jpg)
+![Add and edit recipe page](https://github.com/brookk16/Cuisine/blob/master/course%20files/add_edit.jpg)
+![search for a recipe](https://github.com/brookk16/Cuisine/blob/master/course%20files/search.jpg)
+
+Below you can see the schema for the MongoDB database:
+
+![Data schema for the MongoDB used in this app](https://github.com/brookk16/Cuisine/blob/master/course%20files/recipesdb_schema.jpeg)
 
 
 
