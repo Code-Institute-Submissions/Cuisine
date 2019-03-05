@@ -6,12 +6,12 @@ Cusine is an online recipe book, where users can add, edit and delete the recipe
 
 
 **Index:**
-- [User experience](#user)
-- [Features](#features)
-- [Technologies Used](#technologies)
-- [Testing](#testing)
-- [Deployment](#deployment)
-- [Credits](#credits)
+1. [User experience](#user)
+2. [Features](#features)
+3. [Technologies Used](#technologies)
+4. [Testing](#testing)
+5. [Deployment](#deployment)
+6. [Credits](#credits)
 
 
 
@@ -21,7 +21,7 @@ Users wanted a way to be easily able to find new recipes, written by people of a
 
 For example, please read the user stories below (from which we based our design decisions):
 
-* **User A**: "I want to be able to find recipes, and be able to read theingredients from my smartphone on the go"   
+* **User A**: "I want to be able to find recipes, and be able to read the ingredients from my smartphone"   
     
 * **User B**: "I want to be able to digitize my recipes, so I won't need to keepmy old cookbooks anymore"  
     
@@ -35,7 +35,35 @@ Please look below at the wireframes for the original concept:
 ![Add and edit recipe page](https://github.com/brookk16/Cuisine/blob/master/course%20files/add_edit.jpg)
 ![search for a recipe](https://github.com/brookk16/Cuisine/blob/master/course%20files/search.jpg)
 
-Below you can see the schema for the MongoDB database:
+Below you can see the schema and layout for the MongoDB database:
+
+Recipes follow this format:
+~~~
+{
+    "_id": {
+        "$oid": "5c5b2f9bfb6fc06f4f571c28"
+    },
+    "meal_type": "dinner",
+    "recipe_name": "A simple teriyaki chicken with noodles",
+    "ingredients": "1tb honey, 1/2 cup soy sauce, 1/3 cup red wine vinegar, 250g noodles, 2 peppers, 2 onions, 500g chicken",
+    "cuisine_type": "asian",
+    "recipe_instructions": "To prepare the sauce: mix the honey, soy sauce and red wine vinegar, then set aside. Bring a large pot of water to boil, add a little salt and the noodles, Dice the chicken, and cook until ready. Whilst the chiken is cooking, chop the onions and peppers, and when the chicken is ready add the vegtables. Once the noodles and the vegetable/chicken mix is cooked, combine them and add the sauce. Continue cooking whilst moving the mix as to avoid burning, for a further 5 minutes",
+    "author": "Bob Dylan",
+    "cooking_duration": "30",
+    "serves": "4",
+    "recipe_description": "Noodles with chicken, peppers and onions in a sweet teriyaki sauce"
+}
+~~~
+
+The rest of the collections follow this format:
+~~~
+{
+    "_id": {
+        "$oid": "5c62e732fb6fc01c4ce267f4"
+    },
+    "author": "Bob Dylan"
+}
+~~~
 
 ![Data schema for the MongoDB used in this app](https://github.com/brookk16/Cuisine/blob/master/course%20files/recipesdb_schema.jpeg)
 
@@ -83,17 +111,10 @@ The following features were not added for 3 reasons: time constraints, they were
 
 ## Technologies Used
 
-Flask (1.0.2):
-* Acts as a framework for the app
-
-MongoDB with mlab:
-* MongoDB provides the non-relational databse, whilst mlab hosts our database (allowing users access)
+#### Front-end
 
 Awesome Fonts & Material icons:
 * Provide the icons for the project (awesome fonts was used as well as Material icon to provide the icons for the links to: Github, Facebook and Twitter)
-
-Google Fonts:
-* Fonts "Montserrat" and "Libre Baskerville" used 
 
 Materialize (0.100.2):
 * Provides a grid system to structure html code, basic css styling and also javascript components for the app
@@ -103,36 +124,56 @@ Materialize (0.100.2):
   * Parallax images on all pages
   * Dropdown menus
 
-Jquery (3.2.1):
-* Used to simplify DOM manipulation, which assists the use of Materialize components.
-* Also used for ["search_bar.js"](https://github.com/brookk16/Cuisine/blob/master/static/js/search_bar.js), which renders the search values for the chosen search category, when a category is chosen (allowing users to refine search results)
+Google Fonts:
+* Fonts "Montserrat" and "Libre Baskerville" used 
+
+
+#### Back-end
 
 Python3 (3.4.3):
 * Used to write the logic for this app (which can be seen in [app.py](https://github.com/brookk16/Cuisine/blob/master/app.py))
 
-Pymongo (3.7.2):
+Flask-Pymongo (3.7.2):
 * Python-Flask tools for connecting to and manipulating the MongoDB database
+
+Flask (1.0.2):
+* Acts as a framework for the app
+
+#### Database
+
+MongoDB with mlab:
+* MongoDB provides the non-relational databse, whilst mlab hosts our database (allowing users access)
+
+
+The code editor used to create the project was [Cloud9](https://c9.io/signup).
+
+The project uses [Git](https://git-scm.com) for version control.
 
 For the additional tools and libraries needed to run the app, please refer to [requirements.txt](https://github.com/brookk16/Cuisine/blob/master/requirements.txt)
 
 ## Testing
 
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
+<details>
+<summary>User stories</summary>
+<br>
 
-Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
+1. Users can easily and quickly search results, by either grouping results (with the additional choice of grouping high-low or low-high) or by searching for results with specific values. In addition, the number of results are displayed with the total number of entries in the database. Approriate error messages are displayed for user error and no results found.
+2. Users can easily add recipes to the database, and then edit and delete said recipes if required. 
+3. The site is fully responsive and thus can effectivly be used on smaller screen sizes.
 
-For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
+</details>
 
-Contact form:
-Go to the "Contact Us" page
-Try to submit the empty form and verify that an error message about the required fields appears
-Try to submit the form with an invalid email address and verify that a relevant error message appears
-Try to submit the form with all inputs valid and verify that a success message appears.
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
+<details>
+<summary>Manual Testing</summary>
+<br>
+This is how you dropdown.
+</details>
 
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
+<details>
+<summary>Further testing and Issues</summary>
+<br>
 
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
+
 
 ## Deployment
 
@@ -140,31 +181,80 @@ The project is deployed on Heroku, and can be accessed [here](https://recipe-app
 
 The Github for this project can be found [here](https://github.com/brookk16/Cuisine). And can also be accessed via the github logo in the footer.
 
-Deployment to Heroku required 3 things:
+##### To deploy to Heroku:
+1. Start by creating an account on [Heroku](https://www.heroku.com/)
+2. Create a new app (either via the website or command line)
+3. login to Heroku in the command line (of your ide)
+    ~~~
+    heroku login
+    ~~~
+4. Check your current apps, to check the app has been created
+    ~~~
+    heroku apps
+    ~~~
 
-**1-** Creation of "requirements.txt" file, which displays the additional libraries and requirements to run the project.
+##### You will also require 2 additional files: 
+    
+5. Creation of "requirements.txt" file, which displays the additional libraries and requirements to run the project.
 
- Use the command below (in the command line) to install requirements:
- ~~~
- pip3 install -r requirements.txt
- ~~~
+Use the command below to create the requirements.txt:
+~~~
+sudo pip3 freeze --local > requirements.txt 
+~~~
 
-**2-** Creation of a "Procfile", which tells Heroku how to run our app
+6. Creation of a "Procfile", which tells Heroku how to run our app
+~~~
+echo web: python app.py > Procfile
+~~~
 
-**3-** Setting environment variables on Heroku. 
-Within our flask main code (i.e: app.py) we set the variables for IP, PORT and the SECRET_KEY to environment variables, which are retrieved from Heroku.
+##### Then add the enviromental variables 
 
-There are no differences between the deployed and development version of the app. However, for purposes of securing the app, the following variables were set as environmental variables: IP, PORT and the SECRET_KEY. Each of these were set and are retireved from Heroku.
+7. Go to [Heroku](https://www.heroku.com/)
+ * Go to Settings
+ * Reveal config vars
+ * Set IP: 0.0.0.0 Port: 5000
+
+You will also need to set a SECRET_KEY here in config vars, to keep the SECRET_KEY private and secure. Follow the same process above and add:
+ * SECRET_KEY: (Place your character string here)
+
+##### Finally, link to Github and deploy!
+
+8. Start by using the following commands to create your repository:
+    ~~~
+    git init
+    git add .
+    git commit -m "Initial commit"
+    ~~~
+ 9. Then link to Heroku:
+ * Go to Heroku
+ * Then to deploy
+ * Choose "Github" as the Deployment method
+ * Login and connect to your Github repository (for the project)
+ * Then "enable automatic deploys"
+
+10. If you now go into the command line in your IDE you can push the code to Heroku:
+~~~
+git push heroku master
+~~~
+
+11. Then set up the dynos: 
+~~~
+heroku ps:scale web=1
+~~~
+
+You can now view your project either via the "open app" button on Heroku, or by using the generated url in Heroku.
 
 
 ## Credits
 
 #### Content
 
-All the images used in the parallax for this site were obtained from [unsplash.com](https://unsplash.com)
+All the images used in the parallax for this site were obtained from [unsplash.com](https://unsplash.com).
 
-The logo was created using [hatchful](https://hatchful.shopify.com)
+The logo was created using [hatchful](https://hatchful.shopify.com).
 
 #### Acknowledgements
 
-Inspiration for this project came from [momofuku.com](https://momofuku.com)
+The Code Institute's full stack web development course provided the knowledge for creating the app.
+
+Inspiration for this project came from [momofuku.com](https://momofuku.com).
