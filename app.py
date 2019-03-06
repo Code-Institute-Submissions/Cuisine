@@ -268,7 +268,7 @@ def search_recipes():
                 )
         
         else:
-            flash("No recipes were found")
+            flash("No recipes were found for a {0} of {1}".format(search_field, search_value).replace("_", " "))
             return render_template('searchrecipes.html',
                 recipes=mongo.db.recipes.find(),
                 authors=mongo.db.authors.find().sort('author',1),

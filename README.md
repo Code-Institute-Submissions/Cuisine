@@ -113,10 +113,10 @@ The following features were not added for 3 reasons: time constraints, they were
 
 #### Front-end
 
-Awesome Fonts & Material icons:
+[Fonts awesome](https://fontawesome.com) & [Material icons](https://material.io/tools/icons/?style=baseline):
 * Provide the icons for the project (awesome fonts was used as well as Material icon to provide the icons for the links to: Github, Facebook and Twitter)
 
-Materialize (0.100.2):
+[Materialize](http://archives.materializecss.com/0.100.2/) (0.100.2):
 * Provides a grid system to structure html code, basic css styling and also javascript components for the app
 * Used Materialize components are:
   * Side navigation bar (hiding on smaller screens and displaying a hamburger icon)
@@ -124,24 +124,27 @@ Materialize (0.100.2):
   * Parallax images on all pages
   * Dropdown menus
 
-Google Fonts:
-* Fonts "Montserrat" and "Libre Baskerville" used 
+[Google Fonts](https://fonts.google.com):
+* Fonts "Montserrat" and "Libre Baskerville" used
+
+[Jinja2](http://jinja.pocoo.org/docs/2.10/) (2.10):
+* Used to provided backend connectivity with flask and  to render data from the database 
 
 
 #### Back-end
 
-Python3 (3.4.3):
+[Python3](https://www.python.org/download/releases/3.0/) (3.4.3):
 * Used to write the logic for this app (which can be seen in [app.py](https://github.com/brookk16/Cuisine/blob/master/app.py))
 
-Flask-Pymongo (3.7.2):
+[Flask-Pymongo](https://flask-pymongo.readthedocs.io/en/latest/) (3.7.2):
 * Python-Flask tools for connecting to and manipulating the MongoDB database
 
-Flask (1.0.2):
+[Flask](http://flask.pocoo.org) (1.0.2):
 * Acts as a framework for the app
 
 #### Database
 
-MongoDB with mlab:
+[MongoDB](https://www.mongodb.com) with [mlab](https://mlab.com):
 * MongoDB provides the non-relational databse, whilst mlab hosts our database (allowing users access)
 
 
@@ -156,6 +159,7 @@ For the additional tools and libraries needed to run the app, please refer to [r
 <details>
 <summary>User stories</summary>
 <br>
+User stories were checked to ensure this project meets their requests:
 
 1. Users can easily and quickly search results, by either grouping results (with the additional choice of grouping high-low or low-high) or by searching for results with specific values. In addition, the number of results are displayed with the total number of entries in the database. Approriate error messages are displayed for user error and no results found.
 2. Users can easily add recipes to the database, and then edit and delete said recipes if required. 
@@ -166,13 +170,109 @@ For the additional tools and libraries needed to run the app, please refer to [r
 <details>
 <summary>Manual Testing</summary>
 <br>
-This is how you dropdown.
+Manual testing was conducted on all main features of the app (feautres outlined [here](#features)).
+
+> note: all tests begin by starting at the index/welcome page.
+
+> note: all tests (exlcluding search functionality and working with category values) use the recipe created in test 1.
+
+> note: all tests are from the desktop perspective. For mobile, any references to a "side nav bar", will require clicking on the "&#8801;" symbol first to reveal the menu.
+
+**1. Testing adding a recipe**
+* Started by clicking on "Add a recipe" in the side nav bar, or the "Add +" button in the welcome message box.
+* Redirects user to the correct "addrecipes.html" page
+* Each form field was then filled following the tooltips and messages in the form with random data
+* Then submitted using the "Add a recipe" button
+* User is then redirected to "searchrecipes.html" and the created recipe can be seen
+
+Also tested whether a new author was added to the database (if it doesn't already exist) by adding a new author name to the "Author" field in the form.
+
+
+**2. Testing searching for a recipe**
+<br> 
+* Started by clicking on "Search recipes" in the side nav bar, or the "Search" button in the welcome message box.
+* Redirects to "searchrecipes.html" page
+* Default view shows: all recipes (high to low) and the number of recipes the database currently contains.>]
+
+> Changing the switch from high-low to low-high changes the order of search results (to low to high).
+
+We needed 2 different tests here:
+
+1. Grouping search results:
+   * Clicked on the dropdown menu and chose a search category
+   * Ignored the prompt and 2nd the drowdown menu
+   * Clicked on the "Search" button
+   * Get redirected back to the "searchrecipes.html" page, with recipes ordered by the chosen search category (ordered high-lor or low-high based on switch position)
+   * Correct message displays the search category and number of results (also whether the results are ordered high-low/low-high)
+
+Tests were repeated for each of the 5 search categories (Authors, Cooking duration, Cusine type, Meal type and Serves)
+
+2. Refining search results
+  * Clicked on the dropdown menu and choose a search category
+  * Followed the prompt and add a search value from the dropdown that appears
+  * Then clicked on "Search"
+  * Get redirected back to the "searchrecipes.html" page, with only the recipes that match the search category and value wil be displayed
+  * Correct message displayed the number of search results for the chosen search category and value
+
+Tests were repeated for 3 random values for each search category
+
+if no results were found a message displaying: "No recipes are found for (search category chosen)" of (search value chosen)""
+ 
+**3. Testing viewing full recipe information**
+Started on the search recipes page (searchrecipes.html).
+
+* Choosen the created recipe, and clicked on the "Full Recipe" button
+* Redirects to the recipe's main page, showing all information in the database concerning the chosen recipe
+
+**4. Testing editing a recipe**
+<br>
+Users can only edit recipe content from the recipe's main page
+
+* Clicked on the "Edit" button to the right of the recipe card 
+* Redirected to the "Edit a recipe" page (editrecipes.html) 
+* Form is prepopulated with the chosen recipe's information.
+* Editted each field by adding 123 to the beginning of the input (where possible)
+* Then clicked the "Submit Changes" button
+* Redirected to the search recipes page, which displayed our edited recipe.
+
+**5. Testing deleting a recipe**
+<br>
+Users can only delete a recipe from the recipe's main page
+
+* Clicked on the "Delete" button to the right of the recipe card
+* A modal popup appeard asking me "Are you sure you want to delete this recipe?"
+* Clicked on the "Delete" button in the modal to delete the recipe
+* Redirected to search recipes, where the test recipe was deleted
+
+**6. Testing adding a new category value**
+<br>
+Users can add new category values, but cannot delete or edit them.
+They can add new values on the "Add a recipe" and the "Edit a recipe" pages.
+
+* Go to the bottom of the form (add or edit a recipe)
+* Clicked the "Add +" button (repeated for each of the 4 categories)
+* Followed instructions to add a new value
+* Then clicked the  "Add a new (category name)+" button
+* Redirected back to the form with new category value in it's dropdown menu
+
+If the added category value is already in the database, the new value will not be added, and a message wil appear saying "We already have a (category type) of (category value)".
 </details>
 
 <details>
 <summary>Further testing and Issues</summary>
 <br>
+1. HTML and CSS code were both validated using W3C [HTMl](https://validator.w3.org) and [CSS](https://jigsaw.w3.org/css-validator/) validator.
 
+> note: HTML validation threw up errors, although these were concerning the Jinja2 templating language used in the html templates.
+
+2. Users have tested the site and provided feedback:
+  * **Ex:** "Searching for recipes was a little confusing, I didn't know why the 2nd dropdown appeared" This was solved by adding bold font to the prompt, making it easier to read/understand.
+
+3. The site was tested accross all screen sizes.
+
+Issues:
+* The author is not yet skilled in automated testing, and as such was unable to adhere to a test driven development approach. 
+</details>
 
 
 ## Deployment

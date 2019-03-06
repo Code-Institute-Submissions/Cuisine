@@ -8,7 +8,7 @@ Or a refined view of only the results that contain the submited search value-->
     <div class="col s10 offset-s1 center search-bar">
 
         <form action="{{ url_for('search_recipes') }}" method="POST">
-            <h5>Refine the recipes below</h5>
+            <h5>Search through our recipes below</h5>
             <p class="center">Choose a category below and click search to sort results</p>
 
             <div class="input-field">
@@ -26,7 +26,7 @@ Or a refined view of only the results that contain the submited search value-->
             <div id="hidden-until-clicked">
 
                 <div id="author-input-field" style="display:none;" class="input-field">
-                    <p class="center">Add another search choice to refine results to that choice</p>
+                    <p class="center"><strong>Only</strong> add another search choice to <strong>refine results to that choice</strong></p>
                     <select id="search_values" name="search_values">
                         <option value="" disabled selected>Choose the author to refine results</option>
                         {% for auth in authors %}
@@ -38,7 +38,7 @@ Or a refined view of only the results that contain the submited search value-->
                 </div>
 
                 <div id="cooking-duration-input-field" style="display:none;" class="input-field">
-                    <p class="center">Add another search choice to refine results to that choice</p>
+                    <p class="center"><strong>Only</strong> add another search choice to <strong>refine results to that choice</strong></p>
                     <select id="search_values" name="search_values">
                         <option value="" disabled selected>Choose the cooking duration to refine results</option>
                         {% for dur in cooking_duration %}
@@ -49,7 +49,7 @@ Or a refined view of only the results that contain the submited search value-->
                 </div>
 
                 <div id="cuisine-type-input-field" style="display:none;" class="input-field">
-                    <p class="center">Add another search choice to refine results to that choice</p>
+                    <p class="center"><strong>Only</strong> add another search choice to <strong>refine results to that choice</strong></p>
                     <select id="search_values" name="search_values">
                         <option value="" disabled selected>Choose the type of cuisine to refine results</option>
                         {% for type in cuisine_type %}
@@ -60,7 +60,7 @@ Or a refined view of only the results that contain the submited search value-->
                 </div>
 
                 <div id="meal-type-input-field" style="display:none;" class="input-field">
-                    <p class="center">Add another search choice to refine results to that choice</p>
+                    <p class="center"><strong>Only</strong> add another search choice to <strong>refine results to that choice</strong></p>
                     <select id="search_values" name="search_values">
                         <option value="" disabled selected>Choose the type of meal to refine results</option>
                         {% for meal in meal_type %}
@@ -71,7 +71,7 @@ Or a refined view of only the results that contain the submited search value-->
                 </div>
 
                 <div id="serves-input-field" style="display:none;" class="input-field">
-                    <p class="center">Add another search choice to refine results to that choice</p>
+                    <p class="center"><strong>Only</strong> add another search choice to <strong>refine results to that choice</strong></p>
                     <select id="search_values" name="search_values">
                         <option value="" disabled selected>Choose the serving size to refine results</option>
                         {% for size in serves %}
