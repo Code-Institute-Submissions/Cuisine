@@ -116,7 +116,7 @@ Or a refined view of only the results that contain the submited search value-->
             <div class="recipe-info-card container">
 
                 <div class="row recipe-description-stying">
-                    <a class='dropdown-inner-button recipe-dropdown-title' data-activates='dropdown{{loop.index}}'>Recipe description</a>
+                    <a class='dropdown-inner-button recipe-dropdown-title' data-activates='dropdown{{loop.index}}'>Hover to see the recipe description</a>
                     <ul id='dropdown{{loop.index}}' class='dropdown-content'>
                         <li><a value="{{recipe.recipe_description}}">{{recipe.recipe_description}}</a></li>
                     </ul>
@@ -126,7 +126,7 @@ Or a refined view of only the results that contain the submited search value-->
                     <div class="col s3">
                         <p class="author-recipe-card">Author</p>
                     </div>
-                    <div class="col s8">
+                    <div class="col s9">
                         <p class="recipe">: {{recipe.author.capitalize()}}</p>
                     </div>
                 </div>

@@ -18,7 +18,7 @@
         <div class="row ">
             <div class=" col s6 recipe-ingredients ">
                 <p name="recipe_name " id="recipe_name ">
-                    {%for ingredient in recipe.ingredients.split(", ") %}
+                    {%for ingredient in recipe.ingredients.split(". ") %}
                     <li>{{ ingredient }}</li>
                     {% endfor %}
                 </p>
