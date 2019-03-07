@@ -270,9 +270,14 @@ If the added category value is already in the database, the new value will not b
 
 3. The site was tested across all screen sizes.
 
+4. Google devlopper tools audits were also conducted. 
+
 Issues:
+* Testing revealed lack of detail in explaining how to search through recipes, add and edit them. Thus more comprehensive tooltips and prompts were added. 
+
 * The author is not yet skilled in automated testing, and as such was unable to adhere to a test driven development approach. 
 </details>
+
 
 
 ## Deployment

@@ -12,24 +12,24 @@ Users can also add new categories (meal types, cuisine types, cooking durations 
     <form class="col s10 offset-s1 add-recipe" action="{{ url_for('insert_recipe') }}" method="POST">
         <div class="row">
             <div class="input-field col s12">
-                <input id="recipe_name" name="recipe_name" type="text" required>
+                <input id="recipe_name" name="recipe_name" type="text" class="validate" required>
                 <label for="recipe_name">Recipe Name</label>
             </div>
 
             <div class="input-field col s12">
-                <textarea placeholder="Add a short description of your recipe" id="recipe_description" name="recipe_description" class="materialize-textarea" required></textarea>
+                <textarea placeholder="Add a short description of your recipe" id="recipe_description" name="recipe_description" class="materialize-textarea validate" required></textarea>
                 <label for="textarea1">Recipe Description</label>
             </div>
 
             <div class="input-field col s12">
-                <input id="author" name="author" type="text" required>
+                <input id="author" name="author" type="text" class="validate" required>
                 <label for="author">Author</label>
             </div>
 
             <p class="prompt">Can't find an option to fit your recipe? add a new one at the bottom of the page</p>
 
             <div class="input-field col s4 offset-s1">
-                <select id="serves" name="serves" required>
+                <select id="serves" name="serves" class="validate" required>
                     <option value="" disabled selected>Choose the serving size</option>
                     {% for size in serves %}
                         <option value="{{size.serves}}">{{size.serves}} people</option>
@@ -39,7 +39,7 @@ Users can also add new categories (meal types, cuisine types, cooking durations 
             </div>
 
             <div class="input-field col s4">
-                <select id="cooking_duration" name="cooking_duration" required>
+                <select id="cooking_duration" name="cooking_duration" class="validate" required>
                     <option value="" disabled selected>Choose the cooking duration</option>
                         {% for dur in cooking_duration %}
                             <option value="{{dur.cooking_duration}}">{{dur.cooking_duration}} mins</option>
@@ -49,7 +49,7 @@ Users can also add new categories (meal types, cuisine types, cooking durations 
             </div>
 
             <div class="input-field col s4 offset-s1">
-                <select id="cuisine_type" name="cuisine_type" required>
+                <select id="cuisine_type" name="cuisine_type" class="validate" required>
                 <option value="" disabled selected>Choose the type of cuisine</option>
                 {% for type in cuisine_type %}
                     <option value="{{type.cuisine_type}}">{{type.cuisine_type}}</option>
@@ -59,7 +59,7 @@ Users can also add new categories (meal types, cuisine types, cooking durations 
             </div>
 
             <div class="input-field col s4">
-                <select id="meal_type" name="meal_type" required>
+                <select id="meal_type" name="meal_type" class="validate" required>
                 <option value="" disabled selected>Choose the type of meal</option>
                 {% for meal in meal_type %}
                     <option value="{{meal.meal_type}}">{{meal.meal_type}}</option>
@@ -69,12 +69,12 @@ Users can also add new categories (meal types, cuisine types, cooking durations 
             </div>
 
             <div class="input-field col s12">
-                <textarea name="recipe_instructions" class="materialize-textarea tooltipped" data-position="top" data-delay="30" data-tooltip="Write your instructions as one paragraph and end each line with a '.' except for the last line. So 'Cut the onions. Add the salt' becomes '1. Cut the onions 2. Add the salt'" required></textarea>
+                <textarea name="recipe_instructions" class="materialize-textarea tooltipped validate" data-position="top" data-delay="30" data-tooltip="Write your instructions as one paragraph and end each line with a '.' except for the last line. So 'Cut the onions. Add the salt' becomes '1. Cut the onions 2. Add the salt'" required></textarea>
                 <label for="recipe_instructions">Recipe Instructions</label>
             </div>
 
             <div class="input-field col s12">
-                <textarea id="ingredients" name="ingredients" class="materialize-textarea tooltipped" data-position="top" data-delay="30" data-tooltip="Write your ingredients as one paragraph and separate each ingredient with a '.'. Ex: 'Onions. Salt.'" required></textarea>
+                <textarea id="ingredients" name="ingredients" class="materialize-textarea tooltipped validate" data-position="top" data-delay="30" data-tooltip="Write your ingredients as one paragraph and separate each ingredient with a '.'. Ex: 'Onions. Salt.'" required></textarea>
                 <label for="ingredients">Ingredients</label>
             </div>
         </div>
@@ -100,7 +100,7 @@ Users can also add new categories (meal types, cuisine types, cooking durations 
         <div id="modal1" class="modal">
             <div class="modal-content input-field">
                 <h4>Add a new serving size</h4>
-                <p>Add a new serving size (in minutes) using the slider below.</p>
+                <p>Add a new serving size (in minutes) using the slider below. <br> Please note that adding a new meal type will reset the form!</p>
 
                 <p class="range-field">
                     <input type="range" id="serves" name="serves" min="8" max="50" step="1" />
@@ -124,7 +124,7 @@ Users can also add new categories (meal types, cuisine types, cooking durations 
         <div id="modal2" class="modal">
             <div class="modal-content input-field">
                 <h4>Add a new cooking duration</h4>
-                <p>Add a new cooking duration (in minutes) using the slider below below.</p>
+                <p>Add a new cooking duration (in minutes) using the slider below below. <br> Please note that adding a new meal type will reset the form!</p>
                 <form action="" method="POST">
                     <p class="range-field">
                         <input type="range" id="cooking_duration" name="cooking_duration" min="120" max="360" step="15" />
@@ -148,7 +148,7 @@ Users can also add new categories (meal types, cuisine types, cooking durations 
         <div id="modal3" class="modal">
             <div class="modal-content input-field">
                 <h4>Add a new cuisine type</h4>
-                <p>Add a new cuisine type in the box below.</p>
+                <p>Add a new cuisine type in the box below. <br> Please note that adding a new meal type will reset the form!</p>
                 <input id="cuisine_type" name="cuisine_type" type="text">
             </div>
 
@@ -169,7 +169,7 @@ Users can also add new categories (meal types, cuisine types, cooking durations 
         <div id="modal4" class="modal">
             <div class="modal-content input-field">
                 <h4>Add a new meal type</h4>
-                <p>Add a new meal type in the box below.</p>
+                <p>Add a new meal type in the box below. <br> Please note that adding a new meal type will reset the form!</p>
                 <input id="meal_type" name="meal_type" type="text">
             </div>
             <div class="modal-footer">
