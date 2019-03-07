@@ -2,7 +2,7 @@
 
 See the app [here](https://recipe-app-python.herokuapp.com)
 
-Cusine is an online recipe book, where users can add, edit and delete the recipes on the site. Users can also search through the recipes, and see either a sorted or a refined view of the results. This project is the 4th requirement of the Code Institute's full stack web development course. The project showcases skills in: Python3, Flask and MongoDB.
+Cuisine is an online recipe book, where users can add, edit and delete the recipes on the site. Users can also search through the recipes, and see either a sorted or a refined view of the results. This project is the 4th requirement of the Code Institute's full stack web development course. The project showcases skills in: Python3, Flask and MongoDB.
 
 
 **Index:**
@@ -19,15 +19,15 @@ Cusine is an online recipe book, where users can add, edit and delete the recipe
 
 Users wanted a way to be easily able to find new recipes, written by people of all skills and abilities, and also to easily share their own recipes. 
 
-For example, please read the user stories below (from which we based our design decisions):
+For example, please read the user stories below  (which guided our design decisions):
 
 * **User A**: "I want to be able to find recipes, and be able to read the ingredients from my smartphone"   
     
-* **User B**: "I want to be able to digitize my recipes, so I won't need to keepmy old cookbooks anymore"  
+* **User B**: "I want to be able to digitize my recipes, so I won't need to keep my old cookbooks anymore"  
     
 * **User C**: "I want to be able to find something to cook quickly and easily"
 
-Therefore we concluded that users wanted a simple way to store recipes, in an easily accesible, readable and shareable way. They would therefore also need a method to edit the stored recipes, and also delete them should they wish.
+Therefore we concluded that users wanted a simple way to store recipes, in an easily accessible, readable and shareable way. They would therefore also need a method to edit the stored recipes, and also delete them should they wish.
 
 Please look below at the wireframes for the original concept:
 
@@ -47,7 +47,7 @@ Recipes follow this format:
     "recipe_name": "A simple teriyaki chicken with noodles",
     "ingredients": "1tb honey, 1/2 cup soy sauce, 1/3 cup red wine vinegar, 250g noodles, 2 peppers, 2 onions, 500g chicken",
     "cuisine_type": "asian",
-    "recipe_instructions": "To prepare the sauce: mix the honey, soy sauce and red wine vinegar, then set aside. Bring a large pot of water to boil, add a little salt and the noodles, Dice the chicken, and cook until ready. Whilst the chiken is cooking, chop the onions and peppers, and when the chicken is ready add the vegtables. Once the noodles and the vegetable/chicken mix is cooked, combine them and add the sauce. Continue cooking whilst moving the mix as to avoid burning, for a further 5 minutes",
+    "recipe_instructions": "To prepare the sauce: mix the honey, soy sauce and red wine vinegar, then set aside. Bring a large pot of water to boil, add a little salt and the noodles, Dice the chicken, and cook until ready. Whilst the chicken is cooking, chop the onions and peppers, and when the chicken is ready add the vegetables. Once the noodles and the vegetable/chicken mix is cooked, combine them and add the sauce. Continue cooking whilst moving the mix as to avoid burning, for a further 5 minutes",
     "author": "Bob Dylan",
     "cooking_duration": "30",
     "serves": "4",
@@ -71,17 +71,17 @@ The rest of the collections follow this format:
 
 ## Features
 
-The main features of the app concerns the manipulation of the recipes, and can be divided into the following opperations:
+The main features of the app concern the manipulation of the recipes, and can be divided into the following operations:
 
 * **Add**: users can add new recipes to the database by: 
-   1. clicking either "Add a recipe" in the side navigation bar, or the "Add" button on the welcome page.
+   1. Clicking either "Add a recipe" in the side navigation bar, or the "Add" button on the welcome page.
    2. This takes the user to the "Add a recipe" page where users fill out all the fields in the form, and click the 'Add recipe' button to add their recipe.
    
-   * If the input author name is not currently in the databse, it is added to the "authors" collection.
+   * If the input author name is not currently in the database, it is added to the "authors" collection.
    
    * Users are provided instructions, via hover tooltips and messages in the input fields, on how to input their recipe, and have it shown correctly.
    
-   * Users can also add new **category values** (i.e: a new meal type, cuisine type, serving size and/or cooking duration) if they can't find a value that best suits their recipe, at the bottom of the page. Users can add a new category value by choosing the cateogry they wish to add to, clicking add, and then following the instructions on the pop up modal window. Users cannot submit something another value that is the same as another entry in the database, and will see an error message ("We alrady have a 'category name' called 'invalid input value'")
+   * Users can also add new **category values** (i.e: a new meal type, cuisine type, serving size and/or cooking duration) if they can't find a value that best suits their recipe, at the bottom of the page. Users can add a new category value by choosing the category they wish to add to, clicking add, and then following the instructions on the pop up modal window. Users cannot submit something another value that is the same as another entry in the database, and will see an error message ("We already have a 'category name' called 'invalid input value'")
    
 * **Search**: users can search by: author, cooking duration, cuisine type, meal type and serving size. They can search the recipes in two different ways:
    * Sort results: users can view sorted results that group by the chosen category, and can either be ordered high-low or low-high (based on switch input). They can do this by adding an option to the "Order results by" dropdown, and clicking the "search" button. Users should ignore the second dropdown that appears if they want a sorted view of results.
@@ -96,17 +96,17 @@ The main features of the app concerns the manipulation of the recipes, and can b
    * Users cannot edit category values because they could negatively affect the database, and cause errors on the site.
 
 * **Delete**: 
-   * Users can delete recipes in the databse by clicking the "Delete" button on the recipe's specific page.
+   * Users can delete recipes in the database by clicking the "Delete" button on the recipe's specific page.
    * Users cannot delete category types because it may negatively impact the database, and the app.
    * Category types and authors are kept in the database even if no recipes currently use these values because they may be needed in the future, and thus will be ready for users.  
 
-Please note that only the Gihub logo in the footer works (will take user to the Github page). The Facebook and Twitter logos currently do not go anywhere.
+Please note that only the Github logo in the footer works (will take user to the Github page). The Facebook and Twitter logos currently do not go anywhere.
 #### Features left to implement
 
-The following features were not added for 3 reasons: time constraints, they weren't a requirement for the project and/or I do not curently have the knowledge to implement the feature effectively.
+The following features were not added for 3 reasons: time constraints, they weren't a requirement for the project and/or I do not currently have the knowledge to implement the feature effectively.
 
-1. Allowing users to store images in the MongoDB database, or in another easily scallable method.
-2. Providing the ability for users to create user profiles, for grouping their favourite recipes. 
+1. Allowing users to store images in the MongoDB database, or in another easily scalable method.
+2. Providing the ability for users to create user profiles, for grouping their favorite recipes. 
 
 
 ## Technologies Used
@@ -145,7 +145,7 @@ The following features were not added for 3 reasons: time constraints, they were
 #### Database
 
 [MongoDB](https://www.mongodb.com) with [mlab](https://mlab.com):
-* MongoDB provides the non-relational databse, whilst mlab hosts our database (allowing users access)
+* MongoDB provides the non-relational database, whilst mlab hosts our database (allowing users access)
 
 
 The code editor used to create the project was [Cloud9](https://c9.io/signup).
@@ -161,20 +161,20 @@ For the additional tools and libraries needed to run the app, please refer to [r
 <br>
 User stories were checked to ensure this project meets their requests:
 
-1. Users can easily and quickly search results, by either grouping results (with the additional choice of grouping high-low or low-high) or by searching for results with specific values. In addition, the number of results are displayed with the total number of entries in the database. Approriate error messages are displayed for user error and no results found.
+1. Users can easily and quickly search results, by either grouping results (with the additional choice of grouping high-low or low-high) or by searching for results with specific values. In addition, the number of results are displayed with the total number of entries in the database. Appropriate error messages are displayed for user error and no results found.
 2. Users can easily add recipes to the database, and then edit and delete said recipes if required. 
-3. The site is fully responsive and thus can effectivly be used on smaller screen sizes.
+3. The site is fully responsive and thus can effectively be used on smaller screen sizes.
 
 </details>
 
 <details>
 <summary>Manual Testing</summary>
 <br>
-Manual testing was conducted on all main features of the app (feautres outlined [here](#features)).
+Manual testing was conducted on all main features of the app (features outlined [here](#features)).
 
 > note: all tests begin by starting at the index/welcome page.
 
-> note: all tests (exlcluding search functionality and working with category values) use the recipe created in test 1.
+> note: all tests (excluding search functionality and working with category values) use the recipe created in test 1.
 
 > note: all tests are from the desktop perspective. For mobile, any references to a "side nav bar", will require clicking on the "&#8801;" symbol first to reveal the menu.
 
@@ -211,17 +211,17 @@ Tests were repeated for each of the 5 search categories (Authors, Cooking durati
   * Clicked on the dropdown menu and choose a search category
   * Followed the prompt and add a search value from the dropdown that appears
   * Then clicked on "Search"
-  * Get redirected back to the "searchrecipes.html" page, with only the recipes that match the search category and value wil be displayed
+  * Get redirected back to the "searchrecipes.html" page, with only the recipes that match the search category and value will be displayed
   * Correct message displayed the number of search results for the chosen search category and value
 
 Tests were repeated for 3 random values for each search category
 
-if no results were found a message displaying: "No recipes are found for (search category chosen)" of (search value chosen)""
+If no results were found a message displaying: "No recipes are found for (search category chosen)" of (search value chosen)""
  
 **3. Testing viewing full recipe information**
 Started on the search recipes page (searchrecipes.html).
 
-* Choosen the created recipe, and clicked on the "Full Recipe" button
+* Chosen the created recipe, and clicked on the "Full Recipe" button
 * Redirects to the recipe's main page, showing all information in the database concerning the chosen recipe
 
 **4. Testing editing a recipe**
@@ -231,7 +231,7 @@ Users can only edit recipe content from the recipe's main page
 * Clicked on the "Edit" button to the right of the recipe card 
 * Redirected to the "Edit a recipe" page (editrecipes.html) 
 * Form is prepopulated with the chosen recipe's information.
-* Editted each field by adding 123 to the beginning of the input (where possible)
+* Edited each field by adding 123 to the beginning of the input (where possible)
 * Then clicked the "Submit Changes" button
 * Redirected to the search recipes page, which displayed our edited recipe.
 
@@ -240,7 +240,7 @@ Users can only edit recipe content from the recipe's main page
 Users can only delete a recipe from the recipe's main page
 
 * Clicked on the "Delete" button to the right of the recipe card
-* A modal popup appeard asking me "Are you sure you want to delete this recipe?"
+* A modal popup appeared asking me "Are you sure you want to delete this recipe?"
 * Clicked on the "Delete" button in the modal to delete the recipe
 * Redirected to search recipes, where the test recipe was deleted
 
@@ -253,9 +253,9 @@ They can add new values on the "Add a recipe" and the "Edit a recipe" pages.
 * Clicked the "Add +" button (repeated for each of the 4 categories)
 * Followed instructions to add a new value
 * Then clicked the  "Add a new (category name)+" button
-* Redirected back to the form with new category value in it's dropdown menu
+* Redirected back to the form with new category value in its dropdown menu
 
-If the added category value is already in the database, the new value will not be added, and a message wil appear saying "We already have a (category type) of (category value)".
+If the added category value is already in the database, the new value will not be added, and a message will appear saying "We already have a (category type) of (category value)".
 </details>
 
 <details>
@@ -268,7 +268,7 @@ If the added category value is already in the database, the new value will not b
 2. Users have tested the site and provided feedback:
   * **Ex:** "Searching for recipes was a little confusing, I didn't know why the 2nd dropdown appeared" This was solved by adding bold font to the prompt, making it easier to read/understand.
 
-3. The site was tested accross all screen sizes.
+3. The site was tested across all screen sizes.
 
 Issues:
 * The author is not yet skilled in automated testing, and as such was unable to adhere to a test driven development approach. 
@@ -307,7 +307,7 @@ sudo pip3 freeze --local > requirements.txt
 echo web: python app.py > Procfile
 ~~~
 
-##### Then add the enviromental variables 
+##### Then add the environmental variables 
 
 7. Go to [Heroku](https://www.heroku.com/)
  * Go to Settings
@@ -358,3 +358,4 @@ The logo was created using [hatchful](https://hatchful.shopify.com).
 The Code Institute's full stack web development course provided the knowledge for creating the app.
 
 Inspiration for this project came from [momofuku.com](https://momofuku.com).
+
