@@ -1,6 +1,6 @@
 import os
 import unicodedata
-from flask import Flask, render_template, redirect, request, url_for, flash
+from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -11,6 +11,7 @@ app.config["MONGO_URI"] = 'mongodb://admin-1:family_recipes1@ds125125.mlab.com:2
 app.secret_key = os.getenv("SECRET", "secret key")
 
 mongo = PyMongo(app)
+
 
 @app.route('/')
 @app.route('/welcome')
@@ -39,6 +40,7 @@ def add_recipe():
     """
     Renders the form for the users to add a new recipe to the database
     """
+    session["previous_page"] = request.url
     
     return render_template('addrecipe.html', 
     serves = mongo.db.serves.find(), 
@@ -102,8 +104,8 @@ def insert_serves():
         else:
             flash("We already have a serving size for '{}' people".format(new_serves_size))
     
-    return redirect(url_for('add_recipe'))
-
+    
+    return redirect(session["previous_page"])
 
 
 @app.route('/insert_cooking_duration', methods=["POST"])
@@ -132,7 +134,7 @@ def insert_cooking_duration():
         else:
             flash("We already have a cooking duration of '{}' minutes".format(new_cooking_duration))
     
-    return redirect(url_for('add_recipe'))
+    return redirect(session["previous_page"])
     
 
 
@@ -164,8 +166,7 @@ def insert_cuisine_type():
         else:
             flash("We already have a cuisine type called '{}'".format(new_cuisine_type))
     
-    return redirect(url_for('add_recipe'))
-    
+    return redirect(session["previous_page"])
 
 
 
@@ -196,7 +197,7 @@ def insert_meal_type():
         else:
             flash("We already have a meal type called '{}'".format(new_meal_type))
     
-    return redirect(url_for('add_recipe'))
+    return redirect(session["previous_page"])
 
 
 @app.route('/delete_recipe/<recipe_id>', methods=['POST', 'GET'])
@@ -295,9 +296,11 @@ def edit_recipe(recipe_id):
     """
     Finds all the data for the chosen recipe and displays within the form for editing
     """
-
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     
+    session["previous_page"] = request.url
+    
+    session["recipe_id"] = recipe_id
     
     return render_template('editrecipe.html', 
         recipe = the_recipe, 

@@ -4,6 +4,12 @@ Users cannot edit categories as not to cause errors in the database -->
 {% extends 'base.html'%} {% block content %}
 <div class="row">
     <h2 class="col s10 offset-s1">Edit a recipe</h2>
+    
+    <div class="row">
+        {% with messages = get_flashed_messages() %} {% for message in messages %}
+        <div id="flash-messages" class="col s6 offset-s2" role="alert">{{ message }}</div>
+        {% endfor %} {% endwith %}
+    </div>
 
     <form class="col s10 offset-s1 add-recipe" action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST">
         <div class="row">
@@ -105,7 +111,7 @@ Users cannot edit categories as not to cause errors in the database -->
     <h4 class="add-category-title">Need a new category? add them here</h4>
 
     <form class="col s3" action="{{ url_for('insert_serves') }}" method="POST">
-        <p>Click below to add a new serving size</p>
+        <p>Click below to add a new <strong>serving size</strong></p>
         <a class="waves-effect waves-light btn modal-trigger modal-button-styling category-input" href="#modal1">Add
         <i class="material-icons right">add</i>
         </a>
@@ -131,7 +137,7 @@ Users cannot edit categories as not to cause errors in the database -->
     </form>
 
     <form class="col s3" action="{{ url_for('insert_cooking_duration') }}" method="POST">
-        <p>Click below to add a new cooking duration</p>
+        <p>Click below to add a new <strong>cooking duration</strong></p>
         <a class="waves-effect waves-light btn modal-trigger modal-button-styling category-input" href="#modal2">Add
         <i class="material-icons right">add</i>
         </a>
@@ -155,7 +161,7 @@ Users cannot edit categories as not to cause errors in the database -->
     </form>
 
     <form class="col s3" action="{{ url_for('insert_cuisine_type') }}" method="POST">
-        <p>Click below to add a new cuisine type</p>
+        <p>Click below to add a new <strong>cuisine type</strong></p>
         <a class="waves-effect waves-light btn modal-trigger modal-button-styling category-input" href="#modal3">Add
         <i class="material-icons right">add</i>
         </a>
@@ -176,7 +182,7 @@ Users cannot edit categories as not to cause errors in the database -->
     </form>
 
     <form class="col s3" action="{{ url_for('insert_meal_type') }}" method="POST">
-        <p>Click below to add a new meal type</p>
+        <p>Click below to add a new <strong>meal type</strong></p>
         <a class="waves-effect waves-light btn modal-trigger modal-button-styling category-input" href="#modal4">Add
         <i class="material-icons right">add</i>
         </a>
