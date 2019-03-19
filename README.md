@@ -17,9 +17,9 @@ Cuisine is an online recipe book, where users can add, edit and delete the recip
 
 ## User experience 
 
-Users wanted a way to be easily able to find new recipes, written by people of all skills and abilities, and also to easily share their own recipes. 
+Users wanted an easy way to find new recipes, written by people of all skills and abilities, and also to easily share their own recipes. 
 
-For example, please read the user stories below  (which guided our design decisions):
+For example, here are some user stories below:
 
 * **User A**: "I want to be able to find recipes, and be able to read the ingredients from my smartphone"   
     
@@ -273,7 +273,9 @@ If the added category value is already in the database, the new value will not b
 4. Google devlopper tools audits were also conducted. 
 
 Issues:
-* Testing revealed lack of detail in explaining how to search through recipes, add and edit them. Thus more comprehensive tooltips and prompts were added. 
+* Testing revealed: 
+  * lack of detail in explaining how to search through recipes, add and edit them. Thus more comprehensive tooltips and prompts were added. 
+  * users were wrongly redirected after submitting new categories (users always sent back to "addrecipes.html" even when they added the new category on "editrecipes.html")
 
 * The author is not yet skilled in automated testing, and as such was unable to adhere to a test driven development approach. 
 </details>
@@ -284,7 +286,7 @@ Issues:
 
 The project is deployed on Heroku, and can be accessed [here](https://recipe-app-python.herokuapp.com) 
 
-The Github for this project can be found [here](https://github.com/brookk16/Cuisine). And can also be accessed via the github logo in the footer.
+The Github for this project can be found [here](https://github.com/brookk16/Cuisine). And can also be accessed via the github logo in the footer of the website.
 
 ##### To deploy to Heroku:
 1. Start by creating an account on [Heroku](https://www.heroku.com/)
