@@ -130,6 +130,8 @@ The following features were not added for 3 reasons: time constraints, they were
 [Jinja2](http://jinja.pocoo.org/docs/2.10/) (2.10):
 * Used to provided backend connectivity with flask and  to render data from the database 
 
+[JQuery](https://jquery.com)(3.2.1)
+* Provides DOM manipulation, and allows use of materialize javascript components
 
 #### Back-end
 
