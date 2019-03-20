@@ -6,7 +6,7 @@ Cuisine is an online recipe book, where users can add, edit and delete the recip
 
 
 **Index:**
-1. [User experience](#user)
+1. [User experience](#UX)
 2. [Features](#features)
 3. [Technologies Used](#technologies)
 4. [Testing](#testing)
@@ -15,7 +15,7 @@ Cuisine is an online recipe book, where users can add, edit and delete the recip
 
 
 
-## User experience 
+## UX 
 
 Users wanted an easy way to find new recipes, written by people of all skills and abilities, and also to easily share their own recipes. 
 
@@ -109,7 +109,7 @@ The following features were not added for 3 reasons: time constraints, they were
 2. Providing the ability for users to create user profiles, for grouping their favorite recipes. 
 
 
-## Technologies Used
+## Technologies 
 
 #### Front-end
 
