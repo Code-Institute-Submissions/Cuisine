@@ -288,6 +288,14 @@ The project is deployed on Heroku, and can be accessed [here](https://recipe-app
 
 The Github for this project can be found [here](https://github.com/brookk16/Cuisine). And can also be accessed via the github logo in the footer of the website.
 
+Download the code from github, and place into your project. 
+
+Or clone the project into your working environment, using the command line:
+
+~~~
+git clone https://github.com/cp-example/c9_flask_portfolio_app.git
+~~~
+
 ##### To deploy to Heroku:
 1. Start by creating an account on [Heroku](https://www.heroku.com/)
 2. Create a new app (either via the website or command line)
