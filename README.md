@@ -128,7 +128,7 @@ The following features were not added for 3 reasons: time constraints, they were
 * Fonts "Montserrat" and "Libre Baskerville" used
 
 [Jinja2](http://jinja.pocoo.org/docs/2.10/) (2.10):
-* Used to provided backend connectivity with flask and  to render data from the database 
+* Used to provided backend connectivity with flask and to render data from the database 
 
 [JQuery](https://jquery.com)(3.2.1)
 * Provides DOM manipulation, and allows use of materialize javascript components
@@ -258,6 +258,10 @@ They can add new values on the "Add a recipe" and the "Edit a recipe" pages.
 * Redirected back to the form with new category value in its dropdown menu
 
 If the added category value is already in the database, the new value will not be added, and a message will appear saying "We already have a (category type) of (category value)".
+
+All the Javascript components were also manually tested:
+* All materialize componenets were tested and function correctly.
+* [search_bar](https://github.com/brookk16/Cuisine/blob/master/static/js/search_bar.js) also renders the correct search values, when a search category is chosen.
 </details>
 
 <details>
