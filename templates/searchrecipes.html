@@ -13,7 +13,7 @@ Or a refined view of only the results that contain the submited search value-->
 
             <div class="input-field">
                 <select id="search_field" name="search_field" required>
-                    <option value="" disabled selected>Choose a category to sort results</option>
+                    <option value="" disabled selected>Choose a category to order results</option>
                     <option value="author">Authors</option>
                     <option value="cooking_duration">Cooking duration</option>
                     <option value="cuisine_type">Cuisine type</option>
@@ -26,7 +26,7 @@ Or a refined view of only the results that contain the submited search value-->
             <div id="hidden-until-clicked">
 
                 <div id="author-input-field" style="display:none;" class="input-field">
-                    <p class="center"><strong>Only</strong> add another search choice to <strong>refine results to that choice</strong></p>
+                    <p class="center"><strong>Only</strong> add a search choice below if you want to <strong>refine results to that choice</strong>, if not click <strong>search</strong></p>
                     <select id="search_values" name="search_values">
                         <option value="" disabled selected>Choose the author to refine results</option>
                         {% for auth in authors %}
