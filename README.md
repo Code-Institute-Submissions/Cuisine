@@ -2,7 +2,7 @@
 
 See the app [here](https://recipe-app-python.herokuapp.com)
 
-Cuisine is an online recipe book, where users can add, edit and delete the recipes on the site. Users can also search through the recipes, and see either a sorted or a refined view of the results. This project is the 4th requirement of the Code Institute's full stack web development course. The project showcases skills in: Python3, Flask and MongoDB.
+Cuisine is an online recipe book where users can add, edit and delete the recipes on the site. Users can also search through the recipes and see either a sorted or a refined view of the results. This project is the 4th requirement of the Code Institute's full stack web development course, showcasing skills in: Python3, Flask and MongoDB.
 
 
 **Index:**
@@ -17,7 +17,7 @@ Cuisine is an online recipe book, where users can add, edit and delete the recip
 
 ## UX 
 
-Users wanted an easy way to find new recipes, written by people of all skills and abilities, and also to easily share their own recipes. 
+Users wanted an easy way to find new recipes, written by people of all skills and abilities and also to easily share their own recipes. 
 
 For example, here are some user stories below:
 
@@ -81,7 +81,7 @@ The main features of the app concern the manipulation of the recipes, and can be
    
    * Users are provided instructions, via hover tooltips and messages in the input fields, on how to input their recipe, and have it shown correctly.
    
-   * Users can also add new **category values** (i.e: a new meal type, cuisine type, serving size and/or cooking duration) if they can't find a value that best suits their recipe, at the bottom of the page. Users can add a new category value by choosing the category they wish to add to, clicking add, and then following the instructions on the pop up modal window. Users cannot submit something another value that is the same as another entry in the database, and will see an error message ("We already have a 'category name' called 'invalid input value'")
+   * If they can't find a value that best suits their recipe, users can also add new **category values** (i.e: a new meal type, cuisine type, serving size and/or cooking duration) at the bottom of the page. Users can add a new category value by choosing the category they wish to add to, clicking add, and then following the instructions on the pop up modal window. Users cannot submit something another value that is the same as another entry in the database, and will see an error message ("We already have a 'category name' called 'x'")
    
 * **Search**: users can search by: author, cooking duration, cuisine type, meal type and serving size. They can search the recipes in two different ways:
    * Sort results: users can view sorted results that group by the chosen category, and can either be ordered high-low or low-high (based on switch input). They can do this by adding an option to the "Order results by" dropdown, and clicking the "search" button. Users should ignore the second dropdown that appears if they want a sorted view of results.
