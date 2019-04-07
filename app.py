@@ -8,9 +8,8 @@ from bson.objectid import ObjectId
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'recipesdb'
 app.config["MONGO_URI"] = 'mongodb://admin-1:family_recipes1@ds125125.mlab.com:25125/recipesdb'
-app.secret_key = os.getenv('SECRET', 'No value found')
+app.secret_key = os.getenv('SECRET', 'dev')
 
-"""os.getenv("SECRET", "secret key")"""
 
 mongo = PyMongo(app)
 
