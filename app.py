@@ -1,6 +1,5 @@
 import os
 import unicodedata
-import env
 from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -9,7 +8,8 @@ from bson.objectid import ObjectId
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'recipesdb'
 app.config["MONGO_URI"] = 'mongodb://admin-1:family_recipes1@ds125125.mlab.com:25125/recipesdb'
-app.secret_key = os.environ.get("SECRET_KEY")
+app.secret_key = os.getenv('SECRET', 'No value found')
+
 """os.getenv("SECRET", "secret key")"""
 
 mongo = PyMongo(app)

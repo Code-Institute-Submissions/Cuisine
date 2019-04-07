@@ -1,0 +1,3 @@
+import os
+
+os.environ['SECRET'] = "{O0GWBw-2&'am>z"
